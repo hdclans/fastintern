@@ -1,0 +1,292 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+* {
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+}
+html,
+body {
+    margin: 0px;
+    height: 100%;
+}
+/* a blue color as a generic focus style */
+button:focus-visible {
+    outline: 2px solid #4a90e2 !important;
+    outline: -webkit-focus-ring-color auto 5px !important;
+}
+a {
+    text-decoration: none;
+}
+
+.INDEX {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.INDEX .div {
+    background-color: #ffffff;
+    overflow: hidden;
+    width: 1440px;
+    height: 1711px;
+    position: relative;
+}
+
+.INDEX .footer {
+    position: absolute;
+    width: 1440px;
+    height: 140px;
+    top: 1571px;
+    left: 0;
+    background-color: #65d2cf;
+}
+
+.INDEX .follow {
+    position: relative;
+    width: 214px;
+    height: 27px;
+    top: 65px;
+    left: 613px;
+}
+
+.INDEX .logos {
+    position: relative;
+    height: 27px;
+}
+
+.INDEX .insta {
+    position: absolute;
+    width: 27px;
+    height: 27px;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+
+.INDEX .x {
+    position: absolute;
+    width: 27px;
+    height: 27px;
+    top: 0;
+    left: 47px;
+    object-fit: cover;
+}
+
+.INDEX .linked-in {
+    position: absolute;
+    width: 27px;
+    height: 27px;
+    top: 0;
+    left: 93px;
+}
+
+.INDEX .facebook {
+    position: absolute;
+    width: 27px;
+    height: 27px;
+    top: 0;
+    left: 140px;
+    object-fit: cover;
+}
+
+.INDEX .YT {
+    position: absolute;
+    width: 28px;
+    height: 27px;
+    top: 0;
+    left: 186px;
+}
+
+.INDEX .contenu {
+    position: absolute;
+    width: 1448px;
+    height: 1207px;
+    top: 364px;
+    left: 0;
+}
+
+.INDEX .overlap {
+    position: relative;
+    width: 1440px;
+    height: 1207px;
+    background-color: #f9f9f9;
+}
+
+.INDEX .bouton-connexion {
+    position: absolute;
+    width: 127px;
+    height: 48px;
+    top: 1047px;
+    left: 687px;
+}
+
+.INDEX .overlap-group {
+    position: relative;
+    width: 125px;
+    height: 48px;
+    background-color: #007bb2;
+    border-radius: 100px;
+}
+
+.INDEX .text-wrapper {
+    position: absolute;
+    width: 97px;
+    top: 11px;
+    left: 15px;
+    font-family: "Poppins-Bold", Helvetica;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.INDEX .p {
+    position: absolute;
+    width: 585px;
+    height: 57px;
+    top: 971px;
+    left: 457px;
+    font-family: "Poppins-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.INDEX .une-interface-claire {
+    position: absolute;
+    width: 600px;
+    height: 153px;
+    top: 718px;
+    left: 150px;
+    font-family: "Poppins-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.INDEX .span {
+    font-family: "Poppins-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 24px;
+    letter-spacing: 0;
+}
+
+.INDEX .text-wrapper-2 {
+    font-size: 16px;
+}
+
+.INDEX .une-interface-claire-2 {
+    position: absolute;
+    width: 600px;
+    height: 129px;
+    top: 439px;
+    left: 690px;
+    font-family: "Poppins-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.INDEX .trouvez-votre-stage {
+    position: absolute;
+    width: 600px;
+    height: 153px;
+    top: 136px;
+    left: 150px;
+    font-family: "Poppins-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.INDEX .slogan {
+    position: absolute;
+    width: 1442px;
+    height: 285px;
+    top: 79px;
+    left: 0;
+}
+
+.INDEX .overlap-2 {
+    position: relative;
+    width: 1440px;
+    height: 285px;
+    background-color: #65d2cf;
+}
+
+.INDEX .cloud-lightning {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    top: 55px;
+    left: 141px;
+}
+
+.INDEX .votre-stage-en-un {
+    position: absolute;
+    width: 625px;
+    top: 99px;
+    left: 815px;
+    font-family: "Poppins-Bold", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 40px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.INDEX .header {
+    position: absolute;
+    width: 1442px;
+    height: 79px;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+}
+
+.INDEX .overlap-3 {
+    position: relative;
+    width: 1440px;
+    height: 79px;
+    background-color: #ffffff;
+}
+
+.INDEX .overlap-group-wrapper {
+    position: absolute;
+    width: 127px;
+    height: 48px;
+    top: 16px;
+    left: 1267px;
+}
+
+.INDEX .text-wrapper-3 {
+    position: absolute;
+    top: 28px;
+    left: 85px;
+    font-family: "Poppins-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.INDEX .image-removebg {
+    position: absolute;
+    width: 75px;
+    height: 72px;
+    top: 4px;
+    left: 10px;
+    object-fit: cover;
+}
