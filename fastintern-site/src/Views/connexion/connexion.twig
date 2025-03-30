@@ -49,7 +49,7 @@
                     <label for="password">{{ password_label|default('Mot de passe') }}</label>
                     <input type="password" id="password" name="password" required>
                     
-                    <a href="{{ forgot_password_link|default('#') }}" class="forgot-password">
+                    <a href="{{ forgot_password_link|default('/erreur404') }}" class="forgot-password">
                         {{ forgot_password_text|default('Mot de passe oublié ?') }}
                     </a>
                     

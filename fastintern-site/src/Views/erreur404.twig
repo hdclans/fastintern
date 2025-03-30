@@ -1,0 +1,24 @@
+{# erreur404.twig #}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="http://fastintern-static.local/static/css/erreur404.css">
+    <title>{{ page_title|default('Erreur 404') }}</title>
+</head>
+<body>
+    <header>
+        {{ header_text|default('Oups...') }}
+    </header>
+    
+    <div class="error-block">
+        <h1>{{ error_code|default('404') }}</h1>
+        <p>{{ error_message|default('Désolé, la page que vous recherchez n\'existe pas.') }}</p>
+        <a href="/index" class="btn-home">
+            {{ return_link_text|default('Retour à la page d\'accueil') }}
+        </a>
+    </div>
+</body>
+</html>

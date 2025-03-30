@@ -5,6 +5,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 // Définit le namespace des contrôleurs
 use App\Controllers\HomeController;
 use App\Controllers\ConnexionController;
+use App\Controllers\Erreur404Controller;
 
 // Configuration de Twig
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../src/Views');
@@ -28,6 +29,11 @@ switch ($path) {
         $controller = new ConnexionController($twig);
         $controller->connexion();
         break;
+    case '/erreur404':
+    $controller = new Erreur404Controller($twig);
+    $controller->erreur404();
+    break;
+
     default:
         // Page 404
         header("HTTP/1.0 404 Not Found");
