@@ -62,7 +62,7 @@ header {
 /* Section principale        */
 /* ========================= */
 
-main {
+.main {
     text-align: center;
     padding: 20px;
 }
@@ -190,7 +190,7 @@ main {
     color: #333;
 }
 
-/* Bouton d'identification */
+/* Bouton d’identification */
 
 .identification .btn-connexion {
     background-color: #007bb2;
@@ -227,6 +227,7 @@ footer {
 /* ========================= */
 
 @media (max-width: 768px) {
+
     .features {
         flex-direction: column;
         align-items: center;

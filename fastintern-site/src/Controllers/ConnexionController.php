@@ -1,15 +1,14 @@
 <?php
 namespace App\Controllers;
 
-class HomeController {
+class ConnexionController {
     private $twig;
     
     public function __construct($twig) {
         $this->twig = $twig;
     }
     
-    public function index() {
-        echo $this->twig->render('home/index.twig');
+    public function connexion() {
+        echo $this->twig->render('connexion/connexion.twig');
     }
-
 }

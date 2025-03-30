@@ -4,6 +4,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 // Définit le namespace des contrôleurs
 use App\Controllers\HomeController;
+use App\Controllers\ConnexionController;
 
 // Configuration de Twig
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../src/Views');
@@ -22,6 +23,10 @@ switch ($path) {
     case '/index':
         $controller = new HomeController($twig);
         $controller->index();
+        break;
+    case '/connexion':
+        $controller = new ConnexionController($twig);
+        $controller->connexion();
         break;
     default:
         // Page 404
