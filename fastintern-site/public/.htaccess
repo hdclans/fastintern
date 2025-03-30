@@ -1,0 +1,14 @@
+# Activer le moteur de réécriture
+RewriteEngine On
+
+# Rediriger toutes les requêtes vers index.php sauf si un fichier ou répertoire existe
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Permettre l'accès aux fichiers statiques
+<IfModule mod_headers.c>
+    <FilesMatch "\.(css|js|jpg|png|gif)$">
+        Header set Cache-Control "max-age=604800, public"
+    </FilesMatch>
+</IfModule>
