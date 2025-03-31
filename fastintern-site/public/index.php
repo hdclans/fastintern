@@ -14,29 +14,53 @@ $twig = new \Twig\Environment($loader, [
     'debug' => true,  // Activer le mode debug
 ]);
 
-// Routage simple
-$uri = $_SERVER['REQUEST_URI'];
-$path = parse_url($uri, PHP_URL_PATH);
 
-// Gestion des routes
-switch ($path) {
-    case '/':
-    case '/index':
+
+
+// Récupère l'URL demandée
+if (isset($_GET['uri'])) {
+    $uri = $_GET['uri'];
+} else {
+    $uri = 'index';
+}
+
+
+
+switch ($uri) {
+    case 'index':
         $controller = new HomeController($twig);
         $controller->index();
         break;
-    case '/connexion':
+    case 'pagination':
+        $controller->pagination();
+        break;
+    case 'cgu':
+        $controller->cgu();
+        break;
+    case 'mentions':
+        $controller->mentions();
+        break;
+    case 'uploadCV':
+        $controller->uploadCV();
+        break;
+    case 'connexion':
         $controller = new ConnexionController($twig);
         $controller->connexion();
         break;
-    case '/erreur404':
-    $controller = new Erreur404Controller($twig);
-    $controller->erreur404();
-    break;
-
+    case 'login':
+        $controller->login();
+        break;
+    case 'forgot-password':
+        $controller->forgotPassword();
+        break;
+    case 'addEntreprise':
+        $controller->addEntreprise();
+        break;
+    case 'deleteEntreprise':
+        $controller->deleteEntreprise();
+        break;
     default:
-        // Page 404
-        header("HTTP/1.0 404 Not Found");
-        echo "404 - Page non trouvée";
+        $controller = new Erreur404Controller($twig);
+        $controller->erreur404();
         break;
 }
