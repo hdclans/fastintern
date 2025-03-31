@@ -213,13 +213,82 @@ header {
 /* Footer                    */
 /* ========================= */
 
+/* Footer */
 footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     background-color: #65D2CF;
-    height: 100px;
-    padding: 0 50px;
+    padding: 40px 20px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column; /* Empile les colonnes et les logos verticalement */
+    align-items: center;
+    gap: 20px; /* Espace entre les colonnes et les logos */
+}
+
+/* Conteneur des colonnes */
+.footer-columns {
+    display: flex;
+    justify-content: space-between; /* Aligne les colonnes côte à côte */
+    gap: 20px; /* Espace entre les colonnes */
+    width: 100%; /* Prend toute la largeur disponible */
+    max-width: 1200px; /* Largeur maximale pour limiter l'étalement */
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligne le texte à gauche */
+    text-align: left;
+    flex: 1; /* Les colonnes prennent un espace égal */
+    min-width: 200px; /* Largeur minimale pour éviter qu'elles soient trop petites */
+}
+
+.footer-column h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.footer-column ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Réseaux sociaux */
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.footer-social a img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.footer-social a img:hover {
+    transform: scale(1.1); /* Agrandit légèrement l'icône au survol */
 }
 
 /* ========================= */

@@ -60,10 +60,53 @@
         </section>
     </main>
     
+    <!-- footer -->
     <footer>
-        {% if footer_content is defined %}
-            {{ footer_content|raw }}
-        {% endif %}
+        <div class="footer-content">
+
+            <!-- <div class="bottom-title">
+                <h1>FastIntern</h1>
+            </div> -->
+
+            <!-- Colonnes avec les liens etc -->
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>L'emploi</h3>
+                    <ul>
+                        <li><a href="#">Offres d'emploi par ville</a></li>
+                        <li><a href="#">Offres d'emploi par secteurs</a></li>
+                        <li><a href="#">Offres d'emploi par entreprises</a></li>
+                        <li><a href="#">Offres d'emploi par mots clés</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>L'entreprise</h3>
+                    <ul>
+                        <li><a href="#">Qui sommes-nous ?</a></li>
+                        <li><a href="#">On recrute</a></li>
+                        <li><a href="#">Accès client</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Mentions légales</h3>
+                    <ul>
+                        <li><a href="/?uri=mentions">Informations légales</a></li>
+                        <li><a href="/?uri=cgu">CGU</a></li>
+                        <li><a href="/?uri=privacy">Politique de confidentialité</a></li>
+                        <li><a href="#">Aide et contact</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- reseaux sociaux -->
+            <div class="footer-social">
+                <a href="#"><img src="http://fastintern-static.local/static/assets/instagram.png" alt="Instagram"></a>
+                <a href="#"><img src="http://fastintern-static.local/static/assets/x.png" alt="X"></a>
+                <a href="#"><img src="http://fastintern-static.local/static/assets/linkedin.png" alt="LinkedIn"></a>
+                <a href="#"><img src="http://fastintern-static.local/static/assets/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="http://fastintern-static.local/static/assets/youtube.png" alt="YouTube"></a>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
