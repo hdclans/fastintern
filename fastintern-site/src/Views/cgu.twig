@@ -1,0 +1,132 @@
+{# CGU.twig #}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="http://fastintern-static.local/static/css/cgu.css">
+    <title>{{ page_title|default('CGU') }}</title>
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <div class="logo">
+            <img src="assets/fastintern_logo.png" alt="FastIntern Logo">
+            <span>FastIntern</span>
+        </div>
+        <nav>
+            <a href="/?uri=index">Accueil</a>
+            <a href="#">Offres de stage</a>
+            <a href="#">Candidatures</a>
+            <a href="#">Entreprises</a>
+            <a href="#">Contact</a>
+        </nav>
+        <div class="connexion">
+            <button>
+                <img src="assets/person.png" alt="person_icon" class="person_icon">
+                <a href="connexion.html">Mon compte</a>
+            </button>
+        </div>
+
+        <div class="burger-menu" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="dropdown-menu">
+            <a href="index.html">Accueil</a>
+            <a href="#">Offres de stage</a>
+            <a href="#">Candidatures</a>
+            <a href="#">Entreprises</a>
+            <a href="#">Contact</a>
+        </div>
+
+    </header>
+
+
+    <!-- slogan et rectangle bleu -->
+    <section class="mid-section">
+        <div class="highlight">
+            <img src="assets/cloud-lightning-icon.png" alt="Mid Section Image">
+            <span>Votre stage, en un éclair !</span>
+        </div>
+    </section>
+
+    <!-- Informations légales -->
+    <div class="legal_container">
+        <!-- Menu de gauche -->
+        <div class="left-menu">
+            <ul>
+                <li><a href="index.html">➜ Accueil</a></li>
+                <li><a href="informations_legales.html">Informations légales</a></li>
+                <li><a href="politique_confidentialite.html">Politique de confidentialité</a></li>
+                <li><a href="cgu.html">Conditions générales d'utilisation</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Blocs avec informations légales -->
+        <div class="legal_content">
+            <div class="info-block">
+                <h3>Article 1 - Définitions</h3>
+
+                L’« Utilisateur » : toute personne physique ou morale utilisant le Site. Les systèmes automatisés ou un logiciel accédant au Site sont expressément considérés comme des utilisateurs non légitimes de la base de données disponible sur le Site ou n’ayant pas licitement accès à la base de données disponible sur le Site.
+
+                <br></br>L’ « Utilisateur Candidat » : tout Utilisateur, personne physique non professionnelle, ayant procédé à son Inscription.
+
+                <br></br>Le « Client » : tout Utilisateur, personne physique ou morale agissant dans le cadre de son activité professionnelle, ayant procédé à son Inscription et souscrivant aux Services payants ou gratuits de la société HELLOWORK, y compris la réservation d’un espace de publication de Contenu.
+
+                <br></br>Le « Curriculum vitae » ou « CV » : note établie par l’Utilisateur Candidat détaillant notamment son parcours professionnel, de formation ainsi que ses centres d’intérêt personnels.
+                
+                <br></br>La « CVthèque » : espace Web hébergeant les CV et Profils et accessible via le Site aux Clients ayant souscrit au service « CVthèque ».
+                
+                <br></br>L’ « Espace personnel » : espace dédié à chaque Utilisateur ayant procédé à son Inscription et accessible à l’aide d’un mot de passe. A la suite de son Inscription, l’utilisateur Candidat reçoit automatiquement un mail lui proposant la création d’un mot de passe associé à l’adresse mail communiquée. L’Utilisateur Candidat sera alors en mesure de modifier et/ou compléter ses informations personnelles.
+                
+                <br></br>L’ « Inscription » : action permettant à un Utilisateur de pouvoir accéder à certains Services, et matérialisée par la communication de son adresse mail à HELLOWORK.
+                
+                <br></br>Le « Contenu » : il s’agit d’offre de stage, d’emploi, de formation, de bilan de compétences, de franchise, de portage salariale, de création et de reprise d’entreprise, d’accompagnement personnalisé, de coaching, d’appel d’offre, de reconversion, de service autour de la vie professionnelle ; d’informations sur les Clients et les entreprises en générale, sur la carrière et la gestion de carrière, sur la création et reprise d’entreprise, la franchise, sur le droit, sur la reconversion professionnelle, sur la formation, sur le bilan de compétences, sur le portage salarial, sur l’accompagnement personnalisé, sur le coaching, et plus généralement sur le thème de la vie professionnelle.
+                
+                <br></br>La société « HELLOWORK » : la SAS HELLOWORK, sise 2 Rue de la Mabilais à Rennes (35000) immatriculée sous le n° SIRET 428 843 130 00140.
+                
+                <br></br>Les « Services » : ensemble des prestations proposées par HELLOWORK, disponibles sur le Site et listées ci-après.
+                
+                <br></br>La « Notification » : message proposant le Contenu à destination des Utilisateurs par tous canaux de communication et notamment les moyens suivants : bannière et élément graphique sur le Site, e-mail, SMS, notification mobile, notification web.
+                
+                <br></br>Le « Profil » : ensemble des données collectées et enregistrées par HELLOWORK sur un Utilisateur. Pour un Utilisateur Candidat le Profil est nominatif. A défaut, il est anonyme. Le Profil inclut le « Curriculum Vitae » lorsque l’Utilisateur Candidat l’a utilisé sur le Site.
+                
+                <br></br>Le « Site » : le site Web accessible via les noms de domaine suivants : hellowork.com, blogdumoderateur.com, helloworkplace.fr, maformation.fr, hellowork-group.com, mon-compte-formation.fr, jobijoba.com, holeest.com, hellocv.com, cvcatcher.io, tous les domaines accessibles depuis villes-emplois.com ainsi que tous leurs sous-domaines ou l’application HelloWork pour mobiles et tablettes.
+                <br>Et anciennement accessibles via les noms de domaines suivants : regionsjob.com, jobtrotter.com, ouestjob.com, estjob.com, nordjob.com, parisjob.com, sudouestjob.com, pacajob.com, rhonealpesjob.com, centrejob.com, cadreo.com, hellowork.io, maformation-ouest.fr, maformation-est.fr, maformation-nord.fr, maformation-paris.fr, maformation-sudouest.fr, maformation-paca.fr, maformation-rhonealpes.fr, maformation-centre.fr, mes-competences.com, ma-formation-dif.fr.
+                
+                <br></br>
+                <h3>Article 2 - Objet</h3>
+                Les présentes Conditions générales ont pour objet de fixer les conditions d’accès et d’utilisation des Services proposés sur le Site.
+                
+            </div>
+        </div>
+    </div>
+
+
+    <!-- footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="address">
+                <span>1 Allée du Titane 45100 Orléans</span>
+                <span>02 38 76 42 04</span>
+                <span>cesi@cesi.fr</span>
+            </div>
+            <div class="social-media">
+                <img src="assets/instagram.png" alt="Social Media Icon">
+                <img src="assets/x.png" alt="Social Media Icon">
+                <img src="assets/linkedin.png" alt="Social Media Icon">
+                <img src="assets/facebook.png" alt="Social Media Icon">
+                <img src="assets/youtube.png" alt="Social Media Icon">
+            </div>
+            <div class="legal">
+                <span>©2025 | FastIntern</span>
+                <span><a href="politique_confidentialite.html">Politique de confidentialité</a> | <a href="cgu.html">Conditions générales d'utilisation</a></span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

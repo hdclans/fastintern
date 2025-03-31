@@ -6,6 +6,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use App\Controllers\HomeController;
 use App\Controllers\ConnexionController;
 use App\Controllers\Erreur404Controller;
+use App\Controllers\CGUController;
 
 // Configuration de Twig
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../src/Views');
@@ -35,6 +36,7 @@ switch ($uri) {
         $controller->pagination();
         break;
     case 'cgu':
+        $controller = new CGUController($twig);
         $controller->cgu();
         break;
     case 'mentions':

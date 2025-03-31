@@ -1,15 +1,14 @@
 <?php
 namespace App\Controllers;
 
-class Erreur404Controller {
+class CGUController {
     private $twig;
     
     public function __construct($twig) {
         $this->twig = $twig;
     }
     
-    public function erreur404() {
-        echo $this->twig->render('erreur404.twig');
+    public function cgu() {
+        echo $this->twig->render('cgu.twig');
     }
 }
-?>
