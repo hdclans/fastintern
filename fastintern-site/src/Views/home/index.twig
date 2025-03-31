@@ -15,7 +15,7 @@
             <span class="titre-logo">{{ site_name|default('FastIntern') }}</span>
         </div>
         <nav>
-            <a class="btn-connexion" href="/connexion" {% if activePage == 'entreprises' %}class="active"{% endif %}>Connexion</a>
+            <a class="btn-connexion" href="/?uri=connexion" {% if activePage == 'entreprises' %}class="active"{% endif %}>Connexion</a>
         </nav>
     </header>
     
@@ -56,7 +56,7 @@
         
         <section class="identification">
             <p>{{ identification_text|default('Pour continuer, veuillez vous identifier.') }}</p>
-            <a class="btn-connexion" href="/connexion" {% if activePage == 'entreprises' %}class="active"{% endif %}>{{ connexion_text|default('Connexion') }}</a>
+            <a class="btn-connexion" href="/?uri=connexion" {% if activePage == 'entreprises' %}class="active"{% endif %}>{{ connexion_text|default('Connexion') }}</a>
         </section>
     </main>
     
