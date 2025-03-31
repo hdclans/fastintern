@@ -6,6 +6,7 @@ body {
     background-color: white;
 }
 
+
 /* header */
 header {
     display: flex;
@@ -55,9 +56,11 @@ nav a {
     width: 25px;
     height: 25px;
     margin-right: 8px;
-    vertical-align: middle;
+    vertical-align:middle;
 }
 
+
+/* menu burger */
 .burger-menu {
     display: none;
     cursor: pointer;
@@ -85,7 +88,8 @@ nav a {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.dropdown-menu a {
+.dropdown-menu a,
+.dropdown-menu button {
     width: 100%;
     padding: 10px;
     text-align: center;
@@ -94,6 +98,122 @@ nav a {
     font-size: 16px;
     font-weight: 400;
 }
+
+.dropdown-menu button {
+    background-color: #007BB2;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+
+/* recherche */
+.search-section {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.search-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.search-box input {
+    padding: 10px;
+    border: 1px solid #ADADAD;
+    border-radius: 20px;
+    width: 45%;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.search-button {
+    width: 50px;
+    height: 50px;
+    background-color: #007BB2;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+/* offres */
+/* Section principale */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Espace entre les sections */
+    margin: 40px auto;
+    width: 80%; /* Largeur de la section centrale */
+}
+
+/* Section individuelle */
+.content-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px; /* Espace entre le texte et l'image */
+}
+
+/* Bloc de texte */
+.text-block {
+    flex: 1; /* Prend tout l'espace disponible */
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+    line-height: 1.6;
+}
+
+.text-block h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #007BB2;
+    margin-bottom: 10px;
+}
+
+.text-block p {
+    margin: 0;
+}
+
+/* Bloc d'image */
+.image-block {
+    flex: 1; /* Prend tout l'espace disponible */
+    background-color: #D9F3F2; /* Couleur de fond pour simuler une image */
+    height: 200px; /* Hauteur fixe pour les blocs d'image */
+    border-radius: 10px;
+}
+
+/* Section des boutons */
+.button-section {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espace entre les boutons */
+    margin-top: 20px;
+}
+
+.button-section button {
+    background-color: #007BB2;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-section button:hover {
+    background-color: #005f8a;
+}
+
 
 /* slogan */
 .mid-section {
@@ -117,6 +237,223 @@ nav a {
     margin-right: 20px;
 }
 
+
+/* pour la page de connexion*/
+.login-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #007BB2;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    font-size: 16px;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+button {
+    background-color: #007BB2;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #005f8a;
+}
+
+p {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+p a {
+    color: #007BB2;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+
+/* page d'erreur 404 */
+.error-container {
+    background-color: white;
+    padding-top: 15px;
+    padding-bottom: 40px;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    margin: auto;
+}
+
+.error-container h1 {
+    font-size: 72px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #007BB2;
+}
+
+.error-container h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.error-container p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.info-block h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #000000;
+}
+
+.error-container a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BB2;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 700;
+    transition: background-color 0.3s;
+}
+
+.error-container a:hover {
+    background-color: #005f8a;
+}
+
+
+
+
+/* Footer */
+footer {
+    background-color: #65D2CF;
+    padding: 40px 20px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column; /* Empile les colonnes et les logos verticalement */
+    align-items: center;
+    gap: 20px; /* Espace entre les colonnes et les logos */
+}
+
+/* Conteneur des colonnes */
+.footer-columns {
+    display: flex;
+    justify-content: space-between; /* Aligne les colonnes côte à côte */
+    gap: 20px; /* Espace entre les colonnes */
+    width: 100%; /* Prend toute la largeur disponible */
+    max-width: 1200px; /* Largeur maximale pour limiter l'étalement */
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligne le texte à gauche */
+    text-align: left;
+    flex: 1; /* Les colonnes prennent un espace égal */
+    min-width: 200px; /* Largeur minimale pour éviter qu'elles soient trop petites */
+}
+
+.footer-column h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.footer-column ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Réseaux sociaux */
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.footer-social a img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.footer-social a img:hover {
+    transform: scale(1.1); /* Agrandit légèrement l'icône au survol */
+}
+
+
+
 /* informations légales */
 .legal_container {
     display: flex;
@@ -124,6 +461,7 @@ nav a {
     padding: 20px;
 }
 
+/* Menu de gauche */
 .left-menu {
     width: 200px;
     background-color: white;
@@ -153,6 +491,7 @@ nav a {
     text-decoration: underline;
 }
 
+/* Blocs avec informations légales */
 .legal_content {
     flex: 1;
     display: flex;
@@ -167,7 +506,7 @@ nav a {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.info-block h3 {
+.info-block h2 {
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 10px;
@@ -179,34 +518,70 @@ nav a {
     color: #666;
 }
 
-/* footer */
-footer {
-    background-color: #65D2CF;
-    padding: 40px 20px;
+
+
+/* media queries */
+
+/* tablette en mode paysage ou petits ecrans de pc */
+@media (max-width: 1200px) {
+    nav a {
+        margin: 0 10px;
+    }
+
+    .offer-card {
+        width: 45%;
+    }
 }
 
-.footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+/* tablette en mode portrait et grands téléphones */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .burger-menu {
+        display: flex;
+    }
+
+    .dropdown-menu.active {
+        display: flex;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    .search-box input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .offers-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .offer-card {
+        width: 80%;
+    }
+
+    .mid-section .highlight {
+        flex-direction: column;
+    }
+
+    .highlight img {
+        margin-bottom: 20px;
+    }
 }
 
-.address span,
-.legal span {
-    display: block;
-    text-align: center;
-    font-size: 16px;
-    font-weight: 400;
-}
-
-.social-media img {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-
-.social-media img:hover {
-    transform: scale(1.1);
+/* petits ecrans de téléphones */
+@media (max-width: 480px) {
+    .offer-card {
+        width: 100%;
+    }
 }
