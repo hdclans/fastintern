@@ -16,7 +16,7 @@
     <div class="error-block">
         <h1>{{ error_code|default('404') }}</h1>
         <p>{{ error_message|default('Désolé, la page que vous recherchez n\'existe pas.') }}</p>
-        <a href="/index" class="btn-home">
+        <a href="/?uri=index" class="btn-home">
             {{ return_link_text|default('Retour à la page d\'accueil') }}
         </a>
     </div>
