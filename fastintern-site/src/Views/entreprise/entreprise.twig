@@ -1,0 +1,33 @@
+{# entreprise.twig #}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>FastIntern</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Votre stage, en un éclair !</h1>
+
+    <form method="GET">
+        <input type="text" name="search" placeholder="Rechercher une entreprise">
+        <button type="submit">🔍</button>
+    </form>
+
+    <div>
+        {% for entreprise in entreprises %}
+            <div class="card">
+                <h2>{{ entreprise.nom|e }}</h2>
+                <p>{{ entreprise.description|e }}</p>
+                <p>{{ entreprise.telephone }}</p>
+                <p>{{ entreprise.email }}</p>
+                <p>{{ entreprise.avis }}/5</p>
+            </div>
+        {% else %}
+            <p>Aucune entreprise trouvée.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
+
