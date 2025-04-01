@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\OffreModel;
+use App\Database\Database;
 use Twig\Environment;
 
 class OffreController
@@ -10,10 +11,17 @@ class OffreController
     private $offreModel;
     private $twig;
 
-    public function __construct(Environment $twig, OffreModel $offreModel)
+    public function __construct(Environment $twig, OffreModel $offreModel = null)
     {
         $this->twig = $twig;
-        $this->offreModel = $offreModel;
+        
+        if ($offreModel === null) {
+            $database = new Database();
+            $pdo = $database->getConnection();
+            $this->offreModel = new OffreModel($pdo);
+        } else {
+            $this->offreModel = $offreModel;
+        }
     }
 
     public function index()

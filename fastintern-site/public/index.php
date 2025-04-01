@@ -10,6 +10,7 @@ use App\Controllers\CGUController;
 use App\Controllers\PolitiqueConfidentialiteController;
 use App\Controllers\InfosLegalesController;
 use App\Controllers\OffreController;
+use App\Database\Database;
 
 // Configuration de Twig
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../src/Views');
@@ -18,12 +19,9 @@ $twig = new \Twig\Environment($loader, [
     'debug' => true,  // Activer le mode debug
 ]);
 
-
 // Connexion à la base de données
-$pdo = new PDO('mysql:host=98.66.137.152;dbname=fastintern', 'hugo3', 'Maison98!');
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
+$database = new Database();
+$pdo = $database->getConnection();
 
 // Récupère l'URL demandée
 if (isset($_GET['uri'])) {
@@ -31,8 +29,6 @@ if (isset($_GET['uri'])) {
 } else {
     $uri = 'index';
 }
-
-
 
 switch ($uri) {
     case 'index':
