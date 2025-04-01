@@ -1,0 +1,19 @@
+{% extends "Admin/layout/base.twig" %}
+
+{% block title %}Administration{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Espace administrateur</h1>
+    <p>Bienvenue, {{ session.prenom }} {{ session.nom }}.</p>
+    <p>Vous êtes connecté en tant qu'administrateur.</p>
+    
+    <ul>
+        <li><a href="#">Gérer les utilisateurs</a></li>
+        <li><a href="#">Gérer les entreprises</a></li>
+        <li><a href="#">Gérer les offres de stage</a></li>
+    </ul>
+    
+    <p><a href="?uri=logout">Déconnexion</a></p>
+</div>
+{% endblock %}

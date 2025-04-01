@@ -38,19 +38,20 @@
                     {{ welcome_text_line2|default('Connectez-vous pour accéder à toutes vos offres et candidatures.') }}
                 </p>
                 
-                <form class="form-connexion" action="{{ form_action|default('#') }}" method="{{ form_method|default('post') }}">
-                    {% if error is defined %}
+                {# Important : Action du formulaire modifiée pour pointer directement vers la route login #}
+                <form class="form-connexion" action="/?uri=login" method="post">
+                    {% if error is defined and error is not null %}
                         <div class="error-message">{{ error }}</div>
                     {% endif %}
                     
                     <label for="email">{{ email_label|default('Adresse mail') }}</label>
                     <input type="email" id="email" name="email" required value="{{ email_value|default('') }}">
                     
-                    <label for="password">{{ password_label|default('Mot de passe') }}</label>
-                    <input type="password" id="password" name="password" required>
+                    <label for="mot_de_passe">{{ mot_de_passe_label|default('Mot de passe') }}</label>
+                    <input type="mot_de_passe" id="mot_de_passe" name="mot_de_passe" required>
                     
-                    <a href="{{ forgot_password_link|default('/erreur404') }}" class="forgot-password">
-                        {{ forgot_password_text|default('Mot de passe oublié ?') }}
+                    <a href="/?uri=forgot-mot_de_passe" class="forgot-mot_de_passe">
+                        {{ forgot_mot_de_passe_text|default('Mot de passe oublié ?') }}
                     </a>
                     
                     <button type="submit" class="btn-connexion">
