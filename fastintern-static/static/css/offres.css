@@ -1,0 +1,264 @@
+/* style général */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+
+/* header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+}
+
+header .logo img {
+    width: 75px;
+    height: 72px;
+}
+
+header .logo span {
+    font-size: 16px;
+    font-weight: 400;
+    margin-left: 10px;
+}
+
+nav a {
+    margin: 0 20px;
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.connexion button {
+    background-color: #000000;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.person_icon {
+    width: 25px;
+    height: 25px;
+    margin-right: 8px;
+    vertical-align:middle;
+}
+
+/* slogan */
+.mid-section {
+    background-color: #65D2CF;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.mid-section .highlight {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.highlight img {
+    width: 110px;
+    height: 110px;
+    margin-right: 20px;
+}
+
+
+/* Conteneur principal */
+.offers-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+/* Bloc d'offre */
+.offer-block {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.offer-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Titre */
+.offer-block h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Description */
+.offer-block .description {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Rémunération */
+.offer-block .remuneration {
+    font-size: 0.9em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Dates */
+.offer-block .dates {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* Date de publication */
+.offer-block .publication-date {
+    font-size: 0.8em;
+    color: #999;
+    margin-bottom: 10px;
+}
+
+/* Lien "Voir les détails" */
+.offer-block .details-link {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #65D2CF;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease;
+}
+
+.offer-block .details-link:hover {
+    background-color: #004690;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.pagination a {
+    margin: 0 5px;
+    padding: 8px 12px;
+    background-color: #f1f1f1;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.pagination a.active {
+    background-color: #000000;
+    color: #fff;
+}
+
+.pagination a:hover {
+    background-color: #ddd;
+}
+
+/* Footer */
+footer {
+    background-color: #65D2CF;
+    padding: 40px 20px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column; /* Empile les colonnes et les logos verticalement */
+    align-items: center;
+    gap: 20px; /* Espace entre les colonnes et les logos */
+}
+
+/* Conteneur des colonnes */
+.footer-columns {
+    display: flex;
+    justify-content: space-between; /* Aligne les colonnes côte à côte */
+    gap: 20px; /* Espace entre les colonnes */
+    width: 100%; /* Prend toute la largeur disponible */
+    max-width: 1200px; /* Largeur maximale pour limiter l'étalement */
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligne le texte à gauche */
+    text-align: left;
+    flex: 1; /* Les colonnes prennent un espace égal */
+    min-width: 200px; /* Largeur minimale pour éviter qu'elles soient trop petites */
+}
+
+.footer-column h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.footer-column ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Réseaux sociaux */
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.footer-social a img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.footer-social a img:hover {
+    transform: scale(1.1); /* Agrandit légèrement l'icône au survol */
+}

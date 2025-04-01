@@ -9,6 +9,7 @@ use App\Controllers\Erreur404Controller;
 use App\Controllers\CGUController;
 use App\Controllers\PolitiqueConfidentialiteController;
 use App\Controllers\InfosLegalesController;
+use App\Controllers\OffreController;
 
 // Configuration de Twig
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../src/Views');
@@ -17,6 +18,10 @@ $twig = new \Twig\Environment($loader, [
     'debug' => true,  // Activer le mode debug
 ]);
 
+
+// Connexion à la base de données
+$pdo = new PDO('mysql:host=98.66.137.152;dbname=fastintern', 'hugo3', 'Maison98!');
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
 
@@ -34,8 +39,10 @@ switch ($uri) {
         $controller = new HomeController($twig);
         $controller->index();
         break;
-    case 'pagination':
-        $controller->pagination();
+    case 'offres': // Nouveau cas pour les offres
+        $offreModel = new \App\Models\OffreModel($pdo); // Instanciation du modèle
+        $controller = new OffreController($twig, $offreModel); // Instanciation du contrôleur
+        $controller->index(); // Appel de la méthode pour afficher les offres
         break;
     case 'cgu':
         $controller = new CGUController($twig);
