@@ -9,6 +9,6 @@ class CGUController {
     }
     
     public function cgu() {
-        echo $this->twig->render('cgu.twig');
+        echo $this->twig->render('cgu/cgu.twig');
     }
 }

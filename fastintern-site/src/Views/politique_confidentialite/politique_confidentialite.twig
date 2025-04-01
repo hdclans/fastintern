@@ -1,0 +1,171 @@
+{# politique_confidentialite.twig #}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="http://fastintern-static.local/static/css/cgu.css">
+    <title>{{ page_title|default('Politique Confidentialite') }}</title>
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <div class="logo">
+            <img src="http://fastintern-static.local/static/assets/logo.png" alt="FastIntern Logo">
+            <span>FastIntern</span>
+        </div>
+        <nav>
+            <a href="/?uri=index">Accueil</a>
+            <a href="#">Offres de stage</a>
+            <a href="#">Candidatures</a>
+            <a href="#">Entreprises</a>
+            <a href="#">Contact</a>
+        </nav>
+        <div class="connexion">
+            <button>
+                <img src="http://fastintern-static.local/static/assets/person.png" alt="person_icon" class="person_icon">
+                <a href="connexion.html">Mon compte</a>
+            </button>
+        </div>
+
+        <div class="burger-menu" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="dropdown-menu">
+            <a href="index.html">Accueil</a>
+            <a href="#">Offres de stage</a>
+            <a href="#">Candidatures</a>
+            <a href="#">Entreprises</a>
+            <a href="#">Contact</a>
+        </div>
+
+    </header>
+
+
+    <!-- slogan et rectangle bleu -->
+    <section class="mid-section">
+        <div class="highlight">
+            <img src="http://fastintern-static.local/static/assets/cloud.png" alt="Mid Section Image">
+            <span>Votre stage, en un éclair !</span>
+        </div>
+    </section>
+
+    <!-- Informations légales -->
+    <div class="legal_container">
+        <!-- Menu de gauche -->
+        <div class="left-menu">
+            <ul>
+                <li><a href="/?uri=index">➜ Accueil</a></li>
+                <li><a href="#">Informations légales</a></li>
+                <li><a href="/?uri=politique_confidentialite">Politique de confidentialité</a></li>
+                <li><a href="/?uri=cgu">Conditions générales d'utilisation</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Blocs avec informations légales -->
+        <div class="legal_content">
+            <div class="info-block">
+                <h2>Politique de protection des données personnelles</h2>
+                La mission de FASTINTERN est d’accompagner les étudiants dans leur recherche de stages et de les mettre en relation avec des entreprises proposant des opportunités adaptées à leur profil et à leurs compétences.
+
+                <br>FASTINTERN est soucieux de la protection et de la confidentialité des données personnelles et s’engage à assurer le meilleur niveau de protection àvos données personnelles en conformité avec les règlementations en vigueur sur la protection des données personnelles, applicables en Europe (RGPD)et en France.
+
+                <br>Cette politique de confidentialité a pour objectif de vous informer sur les mesures et engagements pratiques pris par FASTINTERN afin de veiller au respect et à la protection de vos données personnelles lors de l’utilisation de nos services.
+
+                <br>Elle s’applique à l’ensemble des services (applications web, applications mobiles, services de mise en relation, solutions de ciblage pour la recommandation d’offres de stage, etc.) édités et fournis par FASTINTERN depuis les différents Sites et Applications. Elle concerne tous les visiteurs de nos Sites et les utilisateurs de nos Services (« Utilisateurs »).
+
+                <br>Les termes « nous » et « notre » se rapportent à FASTINTERN et aux Services que nous fournissons. Les termes « Vous » et « vos / votre » se rapportent à tous les Utilisateurs de nos Services ou visiteurs de nos Sites ou Applications. Le terme « Client » définit nos clients professionnels (entreprises, organisations, ou toute entité proposant des stages).
+                <br></br>
+
+                <h3>1 – Identité du responsable du traitement des données</h3>
+                FASTINTERN collecte et traite les données personnelles de ses Utilisateurs via ses Sites et Applications afin de vous fournir, ainsi qu’à nos Clients, nos Services. Dans la majeure partie des cas, FASTINTERN agit en tant que responsable de traitement ou co-responsable de traitement au sens du Règlement Général sur la Protection des Données (RGPD).
+                <br>
+
+                <br>Notre Délégué à la Protection des Données (DPO) est Hugo DAUGERON. 
+                <br>Il peut être contacté par mail à l’adresse hugo.daugeron@fastintern.com ou par voie postale à l’adresse suivante :
+                <br>
+                <br><strong>FASTINTERN</strong>
+                <br>SAS 1 Allée du Titane 
+                <br>Orléans, France
+
+                <br></br>
+                <h3>2 – Finalité des traitements et base juridique</h3>
+                Les traitements mis en œuvre par FASTINTERN répondent à des finalités explicites, légitimes et déterminées.
+
+                <p>Mise en relation</p>
+                
+                Nos Services vous permettent d’être mis en relation avec des entreprises proposant des stages. Nous utilisons vos données pour vous suggérer des offres de stage adaptées à votre profil et à vos compétences.
+                
+                <p>Aide à la recherche de stages</p>
+
+                Nous traitons vos données pour faciliter vos recherches de stages, gérer vos candidatures et vous informer des nouvelles opportunités. Par exemple, nous vous proposons des outils tels que les « alertes stage » pour vous notifier des offres correspondant à vos critères.
+
+                <p>Recommandations personnalisées</p>
+
+                Nous utilisons vos données pour vous recommander des offres de stage ciblées, en fonction de votre profil, de vos recherches précédentes et des stages auxquels vous avez postulé.
+
+                <p>Amélioration des services</p>
+
+                Vos données nous permettent d’améliorer nos Services et de développer de nouvelles fonctionnalités pour mieux répondre à vos besoins.
+                
+            </div>
+        </div>
+    </div>
+
+
+    <!-- footer -->
+    <footer>
+        <div class="footer-content">
+
+            <!-- <div class="bottom-title">
+                <h1>FastIntern</h1>
+            </div> -->
+
+            <!-- Colonnes avec les liens etc -->
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>L'emploi</h3>
+                    <ul>
+                        <li><a href="#">Offres d'emploi par ville</a></li>
+                        <li><a href="#">Offres d'emploi par secteurs</a></li>
+                        <li><a href="#">Offres d'emploi par entreprises</a></li>
+                        <li><a href="#">Offres d'emploi par mots clés</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>L'entreprise</h3>
+                    <ul>
+                        <li><a href="#">Qui sommes-nous ?</a></li>
+                        <li><a href="#">On recrute</a></li>
+                        <li><a href="#">Accès client</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Mentions légales</h3>
+                    <ul>
+                        <li><a href="/?uri=mentions">Informations légales</a></li>
+                        <li><a href="/?uri=cgu">CGU</a></li>
+                        <li><a href="/?uri=privacy">Politique de confidentialité</a></li>
+                        <li><a href="#">Aide et contact</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- reseaux sociaux -->
+            <div class="footer-social">
+                <a href="#"><img src="http://fastintern-static.local/static/assets/instagram.png" alt="Instagram"></a>
+                <a href="#"><img src="http://fastintern-static.local/static/assets/x.png" alt="X"></a>
+                <a href="#"><img src="http://fastintern-static.local/static/assets/linkedin.png" alt="LinkedIn"></a>
+                <a href="#"><img src="http://fastintern-static.local/static/assets/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="http://fastintern-static.local/static/assets/youtube.png" alt="YouTube"></a>
+            </div>
+        </div>
+    </footer>
+
+<script src="script.js"></script>
+
+</html>

@@ -7,6 +7,7 @@ use App\Controllers\HomeController;
 use App\Controllers\ConnexionController;
 use App\Controllers\Erreur404Controller;
 use App\Controllers\CGUController;
+use App\Controllers\PolitiqueConfidentialiteController;
 
 // Configuration de Twig
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../src/Views');
@@ -39,8 +40,9 @@ switch ($uri) {
         $controller = new CGUController($twig);
         $controller->cgu();
         break;
-    case 'mentions':
-        $controller->mentions();
+    case 'politique_confidentialite':
+        $controller = new PolitiqueConfidentialiteController($twig);
+        $controller->politique_confidentialite();
         break;
     case 'uploadCV':
         $controller->uploadCV();
