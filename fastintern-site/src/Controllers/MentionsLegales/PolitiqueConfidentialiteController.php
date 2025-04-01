@@ -1,5 +1,5 @@
 <?php
-namespace App\Controllers;
+namespace App\Controllers\MentionsLegales;
 
 class PolitiqueConfidentialiteController {
     private $twig;
@@ -9,6 +9,6 @@ class PolitiqueConfidentialiteController {
     }
     
     public function politique_confidentialite() {
-        echo $this->twig->render('politique_confidentialite/politique_confidentialite.twig');
+        echo $this->twig->render('MentionsLegales/politique_confidentialite.twig');
     }
 }

@@ -3,12 +3,12 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 // Définit le namespace des contrôleurs
-use App\Controllers\HomeController;
-use App\Controllers\ConnexionController;
+use App\Controllers\Invite\HomeController;
+use App\Controllers\Auth\ConnexionController;
 use App\Controllers\Erreur404Controller;
-use App\Controllers\CGUController;
-use App\Controllers\PolitiqueConfidentialiteController;
-use App\Controllers\InfosLegalesController;
+use App\Controllers\MentionsLegales\CGUController;
+use App\Controllers\MentionsLegales\PolitiqueConfidentialiteController;
+use App\Controllers\MentionsLegales\InfosLegalesController;
 use App\Controllers\OffreController;
 use App\Database\Database;
 

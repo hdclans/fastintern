@@ -1,12 +1,12 @@
-{# home-invite.twig #}
+{# connexion.twig #}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="http://fastintern-static.local/static/css/home-invite.css">
-    <title>{{ page_title|default('accueil') }}</title>
+    <link rel="stylesheet" href="http://fastintern-static.local/static/css/Auth/connexion.css">
+    <title>{{ page_title|default('Connexion') }}</title>
 </head>
 <body>
     <header>
@@ -15,7 +15,7 @@
             <span class="titre-logo">{{ site_name|default('FastIntern') }}</span>
         </div>
         <nav>
-            <a class="btn-connexion" href="/?uri=connexion" {% if activePage == 'entreprises' %}class="active"{% endif %}>Connexion</a>
+            <a class="btn-retour" href="/?uri=index" {% if activePage == 'entreprises' %}class="active"{% endif %}>{{ accueil_text|default('Accueil') }}</a>
         </nav>
     </header>
     
@@ -25,42 +25,42 @@
             <h1>{{ slogan|default('Votre stage, en un éclair !') }}</h1>
         </section>
         
-        <div class="features">
-            {% for feature in features|default([
-                {
-                    'class': 'feature1',
-                    'color_block': 'color-block1',
-                    'title': 'Trouvez votre stage facilement !',
-                    'description': 'FastIntern est une plateforme dédiée aux étudiants du CESI en quête d\'un stage. Conçue pour simplifier la recherche et optimiser les candidatures, elle vous permet d\'accéder rapidement aux offres qui correspondent à votre profil.'
-                },
-                {
-                    'class': 'feature2',
-                    'color_block': 'color-block2',
-                    'title': 'Une interface claire et intuitive',
-                    'description': 'Pensé pour être efficace et simple d\'utilisation, FastIntern vous offre une expérience fluide : postulez en quelques clics et suivez vos candidatures en toute sérénité.'
-                },
-                {
-                    'class': 'feature3',
-                    'color_block': 'color-block3',
-                    'title': 'Un projet étudiant, une solution pour les étudiants',
-                    'description': 'Créé en 2025 par des étudiants du CESI, FastIntern répond aux besoins réels des élèves en formation. Parce qu\'on sait combien il est parfois difficile de trouver un stage, nous avons conçu un outil adapté, rapide et efficace.'
-                }
-            ]) %}
-                <div class="{{ feature.class }}">
-                    <div class="{{ feature.color_block }}"></div>
-                    <h2 class="titre feature">{{ feature.title }}</h2>
-                    <p>{{ feature.description }}</p>
-                </div>
-            {% endfor %}
-        </div>
+        <h1 class="titre-connexion">{{ connexion_title|default('Se connecter') }}</h1>
         
-        <section class="identification">
-            <p>{{ identification_text|default('Pour continuer, veuillez vous identifier.') }}</p>
-            <a class="btn-connexion" href="/?uri=connexion" {% if activePage == 'entreprises' %}class="active"{% endif %}>{{ connexion_text|default('Connexion') }}</a>
-        </section>
+        {% if show_error_link|default(false) %}
+            <a href="#">pour erreur</a>
+        {% endif %}
+        
+        <div class="container">
+            <div class="box">
+                <p class="welcome-text">
+                    {{ welcome_text_line1|default('Heureux de vous revoir sur FastIntern !') }}<br>
+                    {{ welcome_text_line2|default('Connectez-vous pour accéder à toutes vos offres et candidatures.') }}
+                </p>
+                
+                <form class="form-connexion" action="{{ form_action|default('#') }}" method="{{ form_method|default('post') }}">
+                    {% if error is defined %}
+                        <div class="error-message">{{ error }}</div>
+                    {% endif %}
+                    
+                    <label for="email">{{ email_label|default('Adresse mail') }}</label>
+                    <input type="email" id="email" name="email" required value="{{ email_value|default('') }}">
+                    
+                    <label for="password">{{ password_label|default('Mot de passe') }}</label>
+                    <input type="password" id="password" name="password" required>
+                    
+                    <a href="{{ forgot_password_link|default('/erreur404') }}" class="forgot-password">
+                        {{ forgot_password_text|default('Mot de passe oublié ?') }}
+                    </a>
+                    
+                    <button type="submit" class="btn-connexion">
+                        {{ submit_button_text|default('Se connecter') }}
+                    </button>
+                </form>
+            </div>
+        </div>
     </main>
     
-    <!-- footer -->
     <footer>
         <div class="footer-content">
 
@@ -90,9 +90,9 @@
                 <div class="footer-column">
                     <h3>Mentions légales</h3>
                     <ul>
-                        <li><a href="/?uri=infos_legales">Informations légales</a></li>
+                        <li><a href="/?uri=mentions">Informations légales</a></li>
                         <li><a href="/?uri=cgu">CGU</a></li>
-                        <li><a href="/?uri=politique_confidentialite">Politique de confidentialité</a></li>
+                        <li><a href="/?uri=privacy">Politique de confidentialité</a></li>
                         <li><a href="#">Aide et contact</a></li>
                     </ul>
                 </div>

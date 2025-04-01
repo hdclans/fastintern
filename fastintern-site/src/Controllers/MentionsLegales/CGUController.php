@@ -1,5 +1,5 @@
 <?php
-namespace App\Controllers;
+namespace App\Controllers\MentionsLegales;
 
 class CGUController {
     private $twig;
@@ -9,6 +9,6 @@ class CGUController {
     }
     
     public function cgu() {
-        echo $this->twig->render('cgu/cgu.twig');
+        echo $this->twig->render('MentionsLegales/cgu.twig');
     }
 }

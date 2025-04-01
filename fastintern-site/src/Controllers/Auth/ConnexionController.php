@@ -1,5 +1,5 @@
 <?php
-namespace App\Controllers;
+namespace App\Controllers\Auth;
 
 class ConnexionController {
     private $twig;
@@ -9,6 +9,6 @@ class ConnexionController {
     }
     
     public function connexion() {
-        echo $this->twig->render('connexion/connexion.twig');
+        echo $this->twig->render('Auth/connexion.twig');
     }
 }
