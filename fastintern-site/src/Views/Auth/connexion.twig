@@ -1,12 +1,12 @@
-{# connexion.twig #}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="http://fastintern-static.local/static/css/Auth/connexion.css">
-    <title>{{ page_title|default('Connexion') }}</title>
+    <title>{{ page_title|default('Connexion | FastIntern') }}</title>
 </head>
 <body>
     <header>
@@ -14,9 +14,13 @@
             <img src="http://fastintern-static.local/static/assets/logo.png" alt="Logo FastIntern">
             <span class="titre-logo">{{ site_name|default('FastIntern') }}</span>
         </div>
-        <nav>
-            <a class="btn-retour" href="/?uri=index" {% if activePage == 'entreprises' %}class="active"{% endif %}>{{ accueil_text|default('Accueil') }}</a>
-        </nav>
+
+        <div class="profile-container">
+            <a class="btn-retour" href="/?uri=index">
+                <i class="fas fa-home"></i>
+                {{ accueil_text|default('Accueil') }}
+            </a>
+        </div>
     </header>
     
     <main>
@@ -24,90 +28,74 @@
             <img src="http://fastintern-static.local/static/assets/cloud.png" alt="cloud">
             <h1>{{ slogan|default('Votre stage, en un éclair !') }}</h1>
         </section>
-        
-        <h1 class="titre-connexion">{{ connexion_title|default('Se connecter') }}</h1>
-        
-        {% if show_error_link|default(false) %}
-            <a href="#">pour erreur</a>
-        {% endif %}
-        
-        <div class="container">
+
+        <div class="connexion-container">
+            <h1 class="titre-connexion">{{ connexion_title|default('Se connecter') }}</h1>
+            
             <div class="box">
                 <p class="welcome-text">
-                    {{ welcome_text_line1|default('Heureux de vous revoir sur FastIntern !') }}<br>
-                    {{ welcome_text_line2|default('Connectez-vous pour accéder à toutes vos offres et candidatures.') }}
+                    {{ welcome_text_line1|default('Heureux de vous voir sur FastIntern !') }}<br>
+                    {{ welcome_text_line2|default('Connectez-vous pour accéder à toutes les offres et candidatures.') }}
                 </p>
                 
-                {# Important : Action du formulaire modifiée pour pointer directement vers la route login #}
-                <form class="form-connexion" action="/?uri=login" method="post">
-                    {% if error is defined and error is not null %}
-                        <div class="error-message">{{ error }}</div>
-                    {% endif %}
-                    
-                    <label for="email">{{ email_label|default('Adresse mail') }}</label>
-                    <input type="email" id="email" name="email" required value="{{ email_value|default('') }}">
-                    
-                    <label for="mot_de_passe">{{ mot_de_passe_label|default('Mot de passe') }}</label>
-                    <input type="mot_de_passe" id="mot_de_passe" name="mot_de_passe" required>
-                    
-                    <a href="/?uri=forgot-mot_de_passe" class="forgot-mot_de_passe">
-                        {{ forgot_mot_de_passe_text|default('Mot de passe oublié ?') }}
-                    </a>
-                    
-                    <button type="submit" class="btn-connexion">
-                        {{ submit_button_text|default('Se connecter') }}
-                    </button>
-                </form>
+                <form class="form-connexion" id="formConnexion" action="/?uri=login" method="post">
+    {% if error is defined and error is not null %}
+        <div class="alert alert-danger">
+            <i class="fas fa-exclamation-circle"></i>
+            <div class="alert-content">
+                <p>Les identifiants saisis semblent incorrects.</p>
+                <p>Veuillez réessayer</p>
+            </div>
+        </div>
+    {% endif %}
+    
+    <div class="form-group">
+        <label for="email">{{ email_label|default('Adresse mail') }}</label>
+        <div class="input-icon-container">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="email" name="email" value="{{ email_value|default('') }}" required>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="mot_de_passe">{{ mot_de_passe_label|default('Mot de passe') }}</label>
+        <div class="input-icon-container">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="mot_de_passe" name="mot_de_passe" required>
+        </div>
+    </div>
+
+    <a href="#" class="forgot-password">
+        {{ forgot_mot_de_passe_text|default('Mot de passe oublié ?') }}
+    </a>
+    
+    <button type="submit" class="btn-connexion" id="btnConnexion">
+        <i class="fas fa-sign-in-alt"></i>
+        {{ submit_button_text|default('Se connecter') }}
+    </button>
+</form>
             </div>
         </div>
     </main>
     
-    <footer>
-        <div class="footer-content">
-
-            <!-- <div class="bottom-title">
-                <h1>FastIntern</h1>
-            </div> -->
-
-            <!-- Colonnes avec les liens etc -->
-            <div class="footer-columns">
-                <div class="footer-column">
-                    <h3>L'emploi</h3>
-                    <ul>
-                        <li><a href="#">Offres d'emploi par ville</a></li>
-                        <li><a href="#">Offres d'emploi par secteurs</a></li>
-                        <li><a href="#">Offres d'emploi par entreprises</a></li>
-                        <li><a href="#">Offres d'emploi par mots clés</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>L'entreprise</h3>
-                    <ul>
-                        <li><a href="#">Qui sommes-nous ?</a></li>
-                        <li><a href="#">On recrute</a></li>
-                        <li><a href="#">Accès client</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Mentions légales</h3>
-                    <ul>
-                        <li><a href="/?uri=mentions">Informations légales</a></li>
-                        <li><a href="/?uri=cgu">CGU</a></li>
-                        <li><a href="/?uri=privacy">Politique de confidentialité</a></li>
-                        <li><a href="#">Aide et contact</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- reseaux sociaux -->
-            <div class="footer-social">
-                <a href="#"><img src="http://fastintern-static.local/static/assets/instagram.png" alt="Instagram"></a>
-                <a href="#"><img src="http://fastintern-static.local/static/assets/x.png" alt="X"></a>
-                <a href="#"><img src="http://fastintern-static.local/static/assets/linkedin.png" alt="LinkedIn"></a>
-                <a href="#"><img src="http://fastintern-static.local/static/assets/facebook.png" alt="Facebook"></a>
-                <a href="#"><img src="http://fastintern-static.local/static/assets/youtube.png" alt="YouTube"></a>
-            </div>
+<footer>
+    <div class="footer-content">
+        <!-- Réseaux sociaux -->
+        <div class="footer-social">
+            <a href="#"><img src="http://fastintern-static.local/static/assets/instagram.png" alt="Instagram"></a>
+            <a href="#"><img src="http://fastintern-static.local/static/assets/x.png" alt="X"></a>
+            <a href="#"><img src="http://fastintern-static.local/static/assets/linkedin.png" alt="LinkedIn"></a>
+            <a href="#"><img src="http://fastintern-static.local/static/assets/facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="http://fastintern-static.local/static/assets/youtube.png" alt="YouTube"></a>
         </div>
-    </footer>
+        
+        <!-- Copyright -->
+        <div class="footer-copyright">
+            <p>&copy; {{ "now"|date("Y") }} FastIntern - {{ copyright_text|default('Tous droits réservés') }}</p>
+        </div>
+    </div>
+</footer>
+
+    <script src="http://fastintern-static.local/static/JS/Auth/connexion.js"></script>
 </body>
 </html>
