@@ -19,6 +19,8 @@ use App\Controllers\OffreController;
 use App\Database\Database;
 use App\controllers\EntrepriseController; 
 use App\Controllers\UploadController;
+use App\Controllers\Admin\AdminOffreController;
+use App\Controllers\Admin\AdminEntrepriseController;
 
 use App\Controllers\Admin\AdminController;
 use App\Controllers\Pilote\PiloteController;
@@ -63,20 +65,34 @@ switch ($uri) {
         $controller = new \App\Controllers\OffreController($twig, $offreModel); // Instanciation du contrôleur
         $controller->detail(); // Appel de la méthode pour afficher les détails
         break;
+
+
     case 'admin/offres':
         $controller = new \App\Controllers\AdminOffreController($twig, $pdo);
         $controller->index();
         break;
-    
     case 'admin/offres/save':
         $controller = new \App\Controllers\AdminOffreController($twig, $pdo);
         $controller->save();
         break;
-    
     case 'admin/offres/delete':
         $controller = new \App\Controllers\AdminOffreController($twig, $pdo);
         $controller->delete();
         break;
+    case 'admin/entreprises':
+        $controller = new \App\Controllers\Admin\AdminEntrepriseController($twig, $pdo);
+        $controller->index();
+        break;
+    case 'admin/entreprises/save':
+        $controller = new \App\Controllers\Admin\AdminEntrepriseController($twig, $pdo);
+        $controller->save();
+        break;
+    case 'admin/entreprises/delete':
+        $controller = new \App\Controllers\Admin\AdminEntrepriseController($twig, $pdo);
+        $controller->delete();
+        break;
+
+
     case 'cgu':
         $controller = new CGUController($twig);
         $controller->cgu();
