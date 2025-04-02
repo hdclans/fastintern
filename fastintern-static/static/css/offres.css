@@ -341,3 +341,22 @@ footer {
 .footer-column ul li a:hover {
     text-decoration: underline;
 }
+
+/* Réseaux sociaux */
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.footer-social a img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.footer-social a img:hover {
+    transform: scale(1.1); /* Agrandit légèrement l'icône au survol */
+}
