@@ -35,33 +35,34 @@
         </div>
 
         <div class="offer-content">
-            <div class="offer-main-info">
-                <div class="info-card">
-                    <h3>Informations clés</h3>
-                    <ul>
-                        <li><strong>Type de contrat :</strong> Stage</li>
-                        <li><strong>Durée :</strong> {{ ((offre.date_fin|date('U') - offre.date_debut|date('U')) / 2592000)|round }} mois</li>
-                        <li><strong>Début :</strong> {{ offre.date_debut|date('d/m/Y') }}</li>
-                        <li><strong>Fin :</strong> {{ offre.date_fin|date('d/m/Y') }}</li>
-                        <li><strong>Rémunération :</strong> {{ offre.remuneration ? offre.remuneration ~ ' €/mois' : 'Non précisée' }}</li>
-                    </ul>
-                </div>
-
-                <div class="description-section">
-                    <h3>Description du stage</h3>
-                    <div class="description-content">
-                        {{ offre.description|nl2br }}
-                    </div>
+            <div class="description-section">
+                <h3>Description du stage</h3>
+                <div class="description-content">
+                    {{ offre.description|nl2br }}
                 </div>
             </div>
+        </div>
 
-            <div class="offer-sidebar">
-                <div class="action-card">
-                    <p class="publication-date">Publiée le {{ offre.date_publication|date('d/m/Y') }}</p>
-                    <button class="apply-button">Postuler</button>
-                    <a href="/?uri=offres" class="back-link">Retour aux offres</a>
+        <!-- Section d'upload -->
+        <div class="upload-section">
+            <h3>Postuler à cette offre</h3>
+            <form action="/?uri=upload_candidature" method="POST" enctype="multipart/form-data" class="upload-form">
+                <input type="hidden" name="offre_id" value="{{ offre.id_offre }}">
+
+                <div class="file-upload">
+                    <label for="cv">CV (PDF, max 2Mo)</label>
+                    <input type="file" id="cv" name="cv" accept=".pdf" required>
                 </div>
-            </div>
+
+                <div class="file-upload">
+                    <label for="lettre">Lettre de motivation (PDF, max 2Mo)</label>
+                    <input type="file" id="lettre" name="lettre" accept=".pdf" required>
+                </div>
+
+                <button type="submit" class="apply-button">Postuler</button>
+            </form>
+
+            <a href="/?uri=offres" class="back-link">Retour aux offres</a>
         </div>
     </main>
 

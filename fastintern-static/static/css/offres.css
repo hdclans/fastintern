@@ -1,4 +1,4 @@
-/* style général */
+/* Style général */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -6,8 +6,7 @@ body {
     background-color: white;
 }
 
-
-/* header */
+/* Header */
 header {
     display: flex;
     align-items: center;
@@ -56,10 +55,10 @@ nav a {
     width: 25px;
     height: 25px;
     margin-right: 8px;
-    vertical-align:middle;
+    vertical-align: middle;
 }
 
-/* slogan */
+/* Slogan */
 .mid-section {
     background-color: #65D2CF;
     padding: 40px 20px;
@@ -80,7 +79,6 @@ nav a {
     height: 110px;
     margin-right: 20px;
 }
-
 
 /* Conteneur principal */
 .offers-container {
@@ -108,42 +106,36 @@ nav a {
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Titre */
 .offer-block h3 {
     font-size: 1.5em;
     margin-bottom: 10px;
     color: #333;
 }
 
-/* Description */
 .offer-block .description {
     font-size: 0.9em;
     color: #555;
     margin-bottom: 10px;
 }
 
-/* Rémunération */
 .offer-block .remuneration {
     font-size: 0.9em;
     color: #333;
     margin-bottom: 10px;
 }
 
-/* Dates */
 .offer-block .dates {
     font-size: 0.9em;
     color: #666;
     margin-bottom: 10px;
 }
 
-/* Date de publication */
 .offer-block .publication-date {
     font-size: 0.8em;
     color: #999;
     margin-bottom: 10px;
 }
 
-/* Lien "Voir les détails" */
 .offer-block .details-link {
     display: inline-block;
     padding: 8px 12px;
@@ -185,14 +177,6 @@ nav a {
     background-color: #ddd;
 }
 
-
-.offer-block .company {
-    font-size: 0.9em;
-    color: #666;
-    margin-bottom: 10px;
-    font-weight: 500;
-}
-
 /* Styles pour la page de détail d'une offre */
 .offer-detail-container {
     max-width: 1200px;
@@ -224,40 +208,14 @@ nav a {
 }
 
 .offer-content {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 30px;
-}
-
-.info-card {
-    background: #f8f9fa;
-    border-radius: 8px;
-    padding: 25px;
-    margin-bottom: 30px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.info-card h3 {
-    color: #333;
-    margin-bottom: 15px;
-    font-size: 1.3em;
-}
-
-.info-card ul {
-    list-style: none;
-    padding: 0;
-}
-
-.info-card li {
-    margin-bottom: 12px;
-    color: #555;
+    margin-bottom: 40px;
 }
 
 .description-section {
     background: white;
     padding: 25px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .description-section h3 {
@@ -271,36 +229,49 @@ nav a {
     line-height: 1.6;
 }
 
-.offer-sidebar {
-    position: sticky;
-    top: 20px;
-}
-
-.action-card {
-    background: white;
-    padding: 25px;
+/* Section d'upload */
+.upload-section {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.publication-date {
-    color: #888;
+.upload-section h3 {
+    font-size: 1.5em;
     margin-bottom: 20px;
+    color: #333;
+}
+
+.file-upload {
+    margin-bottom: 15px;
+}
+
+.file-upload label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.file-upload input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
 .apply-button {
-    display: block;
-    width: 100%;
-    padding: 15px;
-    background-color: #007bff;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #65decf;
     color: white;
     border: none;
-    border-radius: 5px;
-    font-size: 1.1em;
+    border-radius: 4px;
+    font-size: 1em;
     cursor: pointer;
-    margin-bottom: 15px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
 }
 
 .apply-button:hover {
@@ -309,31 +280,14 @@ nav a {
 
 .back-link {
     display: inline-block;
+    margin-top: 15px;
     color: #666;
     text-decoration: none;
-    margin-top: 15px;
 }
 
 .back-link:hover {
     color: #333;
 }
-
-/* Responsive design */
-@media (max-width: 768px) {
-    .offer-content {
-        grid-template-columns: 1fr;
-    }
-    
-    .offer-header h1 {
-        font-size: 2em;
-    }
-    
-    .company-info h2 {
-        font-size: 1.5em;
-    }
-}
-
-
 
 /* Footer */
 footer {
@@ -343,27 +297,22 @@ footer {
 
 .footer-content {
     display: flex;
-    flex-direction: column; /* Empile les colonnes et les logos verticalement */
+    flex-direction: column;
     align-items: center;
-    gap: 20px; /* Espace entre les colonnes et les logos */
+    gap: 20px;
 }
 
-/* Conteneur des colonnes */
 .footer-columns {
     display: flex;
-    justify-content: space-between; /* Aligne les colonnes côte à côte */
-    gap: 20px; /* Espace entre les colonnes */
-    width: 100%; /* Prend toute la largeur disponible */
-    max-width: 1200px; /* Largeur maximale pour limiter l'étalement */
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
 }
 
 .footer-column {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Aligne le texte à gauche */
-    text-align: left;
-    flex: 1; /* Les colonnes prennent un espace égal */
-    min-width: 200px; /* Largeur minimale pour éviter qu'elles soient trop petites */
+    flex: 1;
+    min-width: 200px;
 }
 
 .footer-column h3 {
@@ -376,7 +325,6 @@ footer {
 .footer-column ul {
     list-style: none;
     padding: 0;
-    margin: 0;
 }
 
 .footer-column ul li {
@@ -392,23 +340,4 @@ footer {
 
 .footer-column ul li a:hover {
     text-decoration: underline;
-}
-
-/* Réseaux sociaux */
-.footer-social {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.footer-social a img {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-
-.footer-social a img:hover {
-    transform: scale(1.1); /* Agrandit légèrement l'icône au survol */
 }

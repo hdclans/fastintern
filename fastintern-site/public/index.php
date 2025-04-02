@@ -18,6 +18,7 @@ use App\Controllers\MentionsLegales\InfosLegalesController;
 use App\Controllers\OffreController;
 use App\Database\Database;
 use App\controllers\EntrepriseController; 
+use App\Controllers\UploadController;
 
 use App\Controllers\Admin\AdminController;
 use App\Controllers\Pilote\PiloteController;
@@ -73,8 +74,9 @@ switch ($uri) {
         $controller = new InfosLegalesController($twig);
         $controller->InfosLegales();
         break;
-    case 'uploadCV':
-        $controller->uploadCV();
+    case 'upload_candidature':
+        $controller = new \App\Controllers\UploadController($twig, $pdo); // Ajout de $pdo
+        $controller->handleUpload();
         break;
     case 'connexion':
         $controller = new ConnexionController($twig);
