@@ -56,10 +56,10 @@ switch ($uri) {
         $controller = new OffreController($twig, $offreModel); // Instanciation du contrôleur
         $controller->index(); // Appel de la méthode pour afficher les offres
         break;
-    case 'offre_details':
-        $offreModel = new OffreModel($pdo); // Instanciation du modèle
-        $controller = new OffreController($twig, $offreModel); // Instanciation du contrôleur
-        $controller->offreDetails(); // Appel de la méthode pour afficher les détails de l'offre
+    case 'offre_detail':
+        $offreModel = new \App\Models\OffreModel($pdo); // Instanciation du modèle
+        $controller = new \App\Controllers\OffreController($twig, $offreModel); // Instanciation du contrôleur
+        $controller->detail(); // Appel de la méthode pour afficher les détails
         break;
     case 'cgu':
         $controller = new CGUController($twig);

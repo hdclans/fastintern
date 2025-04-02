@@ -185,6 +185,156 @@ nav a {
     background-color: #ddd;
 }
 
+
+.offer-block .company {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+/* Styles pour la page de détail d'une offre */
+.offer-detail-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.offer-header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.offer-header h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.company-info h2 {
+    font-size: 1.8em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.location {
+    color: #888;
+    font-size: 1.1em;
+}
+
+.offer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+.info-card {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.info-card h3 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.info-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.info-card li {
+    margin-bottom: 12px;
+    color: #555;
+}
+
+.description-section {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.description-section h3 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.3em;
+}
+
+.description-content {
+    color: #555;
+    line-height: 1.6;
+}
+
+.offer-sidebar {
+    position: sticky;
+    top: 20px;
+}
+
+.action-card {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.publication-date {
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.apply-button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: background-color 0.3s;
+}
+
+.apply-button:hover {
+    background-color: #0056b3;
+}
+
+.back-link {
+    display: inline-block;
+    color: #666;
+    text-decoration: none;
+    margin-top: 15px;
+}
+
+.back-link:hover {
+    color: #333;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .offer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .offer-header h1 {
+        font-size: 2em;
+    }
+    
+    .company-info h2 {
+        font-size: 1.5em;
+    }
+}
+
+
+
 /* Footer */
 footer {
     background-color: #65D2CF;

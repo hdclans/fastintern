@@ -21,26 +21,29 @@ class OffreModel
     }
 
     public function getPaginatedOffers($limit, $offset)
-    {
-        $query = "
-            SELECT 
-                id_offre, 
-                titre, 
-                description, 
-                remuneration, 
-                date_debut, 
-                date_fin, 
-                date_publication 
-            FROM OFFRE_STAGE 
-            LIMIT :limit OFFSET :offset
-        ";
-        $stmt = $this->db->prepare($query);
-        $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
-        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
-        $stmt->execute();
+{
+    $query = "
+        SELECT 
+            o.id_offre,
+            o.titre,
+            o.description,
+            o.remuneration,
+            o.date_debut,
+            o.date_fin,
+            o.date_publication,
+            e.nom_entreprise
+        FROM OFFRE_STAGE o
+        INNER JOIN ENTREPRISE e ON o.id_entreprise = e.id_entreprise
+        LIMIT :limit OFFSET :offset
+    ";
+    
+    $stmt = $this->db->prepare($query);
+    $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+    $stmt->execute();
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 
     public function getTotalOffersCount()
     {
@@ -49,5 +52,30 @@ class OffreModel
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
         return $result['total'];
+    }
+
+    public function getOfferById($idOffre)
+    {
+        $query = "
+            SELECT 
+                o.id_offre,
+                o.titre,
+                o.description,
+                o.remuneration,
+                o.date_debut,
+                o.date_fin,
+                o.date_publication,
+                e.nom_entreprise,
+                e.adresse
+            FROM OFFRE_STAGE o
+            INNER JOIN ENTREPRISE e ON o.id_entreprise = e.id_entreprise
+            WHERE o.id_offre = :id_offre
+        ";
+        
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':id_offre', $idOffre, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }

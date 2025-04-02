@@ -1,4 +1,5 @@
-{# offre_etudiant.twig #}<!DOCTYPE html>
+{# offre_etudiant.twig #}
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -49,6 +50,7 @@
         {% for offre in offres %}
             <div class="offer-block">
                 <h3>{{ offre.titre }}</h3>
+                <p class="company"><strong>Entreprise :</strong> {{ offre.nom_entreprise }}</p>
                 <p class="description">
                     {{ offre.description|length > 150 ? offre.description|slice(0, 150) ~ '...' : offre.description }}
                 </p>

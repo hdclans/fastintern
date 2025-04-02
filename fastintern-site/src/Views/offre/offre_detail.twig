@@ -1,0 +1,98 @@
+{# offre_detail.twig #}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="http://fastintern-static.local/static/css/offres.css">
+    <title>{{ offre.titre }} - FastIntern</title>
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <div class="logo">
+            <img src="http://fastintern-static.local/static/assets/logo.png" alt="FastIntern Logo">
+            <span>FastIntern</span>
+        </div>
+        <nav>
+            <a href="/?uri=index">Accueil</a>
+            <a href="/?uri=offres">Offres de stage</a>
+            <a href="#">Candidatures</a>
+            <a href="#">Entreprises</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Détails de l'offre -->
+    <main class="offer-detail-container">
+        <div class="offer-header">
+            <h1>{{ offre.titre }}</h1>
+            <div class="company-info">
+                <h2>{{ offre.nom_entreprise }}</h2>
+                <p class="location">{{ offre.adresse }}</p>
+            </div>
+        </div>
+
+        <div class="offer-content">
+            <div class="offer-main-info">
+                <div class="info-card">
+                    <h3>Informations clés</h3>
+                    <ul>
+                        <li><strong>Type de contrat :</strong> Stage</li>
+                        <li><strong>Durée :</strong> {{ ((offre.date_fin|date('U') - offre.date_debut|date('U')) / 2592000)|round }} mois</li>
+                        <li><strong>Début :</strong> {{ offre.date_debut|date('d/m/Y') }}</li>
+                        <li><strong>Fin :</strong> {{ offre.date_fin|date('d/m/Y') }}</li>
+                        <li><strong>Rémunération :</strong> {{ offre.remuneration ? offre.remuneration ~ ' €/mois' : 'Non précisée' }}</li>
+                    </ul>
+                </div>
+
+                <div class="description-section">
+                    <h3>Description du stage</h3>
+                    <div class="description-content">
+                        {{ offre.description|nl2br }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="offer-sidebar">
+                <div class="action-card">
+                    <p class="publication-date">Publiée le {{ offre.date_publication|date('d/m/Y') }}</p>
+                    <button class="apply-button">Postuler</button>
+                    <a href="/?uri=offres" class="back-link">Retour aux offres</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>L'emploi</h3>
+                    <ul>
+                        <li><a href="#">Offres d'emploi par ville</a></li>
+                        <li><a href="#">Offres d'emploi par secteurs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>L'entreprise</h3>
+                    <ul>
+                        <li><a href="#">Qui sommes-nous ?</a></li>
+                        <li><a href="#">On recrute</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Mentions légales</h3>
+                    <ul>
+                        <li><a href="/?uri=mentions">Informations légales</a></li>
+                        <li><a href="/?uri=cgu">CGU</a></li>
+                        <li><a href="/?uri=privacy">Confidentialité</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
