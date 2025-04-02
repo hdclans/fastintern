@@ -22,6 +22,8 @@ use App\Controllers\Admin\AdminController;
 use App\Controllers\Pilote\PiloteController;
 use App\Controllers\Etudiant\EtudiantController;
 
+use App\Models\OffreModel;
+
 // Configuration de Twig
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../src/Views');
 $twig = new \Twig\Environment($loader, [
@@ -49,7 +51,7 @@ switch ($uri) {
         $controller->index();
         break;
     case 'offres': // Nouveau cas pour les offres
-        $offreModel = new \App\Models\OffreModel($pdo); // Instanciation du modèle
+        $offreModel = new OffreModel($pdo); // Instanciation du modèle
         $controller = new OffreController($twig, $offreModel); // Instanciation du contrôleur
         $controller->index(); // Appel de la méthode pour afficher les offres
         break;
