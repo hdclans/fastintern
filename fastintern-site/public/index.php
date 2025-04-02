@@ -17,6 +17,7 @@ use App\Controllers\MentionsLegales\PolitiqueConfidentialiteController;
 use App\Controllers\MentionsLegales\InfosLegalesController;
 use App\Controllers\OffreController;
 use App\Database\Database;
+use App\controllers\EntrepriseController; 
 
 use App\Controllers\Admin\AdminController;
 use App\Controllers\Pilote\PiloteController;
@@ -95,7 +96,10 @@ switch ($uri) {
     case 'forgot-password':
         $controller->forgotPassword();
         break;
-
+    case 'entreprise':
+        $controller = new EntrepriseController($twig);
+        $controller->entreprise();
+        break;
 
 
     // Espaces utilisateurs

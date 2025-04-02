@@ -1,4 +1,3 @@
-{# entreprise.twig #}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,28 +5,114 @@
     <title>FastIntern</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="http://fastintern-static.local/static/css/entreprise.css">
 </head>
 <body>
-    <h1>Votre stage, en un éclair !</h1>
-
-    <form method="GET">
-        <input type="text" name="search" placeholder="Rechercher une entreprise">
-        <button type="submit">🔍</button>
-    </form>
-
-    <div>
-        {% for entreprise in entreprises %}
-            <div class="card">
-                <h2>{{ entreprise.nom|e }}</h2>
-                <p>{{ entreprise.description|e }}</p>
-                <p>{{ entreprise.telephone }}</p>
-                <p>{{ entreprise.email }}</p>
-                <p>{{ entreprise.avis }}/5</p>
-            </div>
-        {% else %}
-            <p>Aucune entreprise trouvée.</p>
-        {% endfor %}
+    <header>
+    <!-- Logo et Navigation à gauche -->
+    <div class="logo">
+        <img src="http://fastintern-static.local/static/assets/logo.png" alt="Logo FastIntern">
+        <span class="titre-logo">{{ site_name|default('FastIntern') }}</span>
     </div>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="/">Accueil</a>
+                <a href="/index.php?uri=offres">Offres de stage</a>
+                <a href="/index.php?uri=entreprise">Entreprises</a>
+                <a href="/index.php?uri=candidatures">Candidatures</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Bouton Connexion seul à droite -->
+    <div class="nav-connexion">
+        <a href="/index.php?uri=connexion">Connexion</a>
+    </div>
+</header>
+
+    <main>
+        <section class="slogan">
+            <img src="http://fastintern-static.local/static/assets/cloud.png" alt="cloud">
+            <h1>{{ slogan|default('Votre stage, en un éclair !') }}</h1>
+        </section>
+
+    <div class="search-container">
+        <form method="GET">
+            <input type="text" name="search" placeholder="Rechercher votre entreprise ici ...">
+            <button type="submit">🔍</button>
+    </form>
+    </div>
+
+
+       <!-- <div class="entreprises-container">
+            {% for entreprise in entreprises %}
+                <div class="card">
+                    <h2>{{ entreprise.nom|e }}</h2>
+                    <p>{{ entreprise.description|e }}</p>
+                    <p>Tel: {{ entreprise.telephone }}</p>
+                    <p>Mail: {{ entreprise.email }}</p>
+                    <div class="entreprise-rating">
+                        {% for i in 1..5 %}
+                            {% if i <= entreprise.avis %}
+                                <span class="star filled">★</span>
+                            {% else %}
+                            <span class="star">☆</span>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    <button>Laisser un avis</button>
+                </div>
+            {% else %}
+                <p>Aucune entreprise trouvée.</p>
+            {% endfor %}
+        </div> -->
+   
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <!-- Colonnes avec les liens etc -->
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>L'emploi</h3>
+                    <ul>
+                        <li><a href="#">Offres d'emploi par ville</a></li>
+                        <li><a href="#">Offres d'emploi par secteurs</a></li>
+                        <li><a href="#">Offres d'emploi par entreprises</a></li>
+                        <li><a href="#">Offres d'emploi par mots clés</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>L'entreprise</h3>
+                    <ul>
+                        <li><a href="#">Qui sommes-nous ?</a></li>
+                        <li><a href="#">On recrute</a></li>
+                        <li><a href="#">Accès client</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Mentions légales</h3>
+                    <ul>
+                        <li><a href="/?uri=mentions">Informations légales</a></li>
+                        <li><a href="/?uri=cgu">CGU</a></li>
+                        <li><a href="/?uri=privacy">Politique de confidentialité</a></li>
+                        <li><a href="#">Aide et contact</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Réseaux sociaux -->
+            <div class="footer-social">
+                <a href="#"><img src="http://fastintern-static.local/static/assets/instagram.png" alt="Instagram"></a>
+                <a href="#"><img src="http://fastintern-static.local/static/assets/x.png" alt="X"></a>
+                <a href="#"><img src="http://fastintern-static.local/static/assets/linkedin.png" alt="LinkedIn"></a>
+                <a href="#"><img src="http://fastintern-static.local/static/assets/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="http://fastintern-static.local/static/assets/youtube.png" alt="YouTube"></a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
-

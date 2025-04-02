@@ -1,0 +1,249 @@
+/* Style général pour le corps */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.logo img {
+    height: 70px;
+}
+
+.titre-logo {
+    font-size: 16px;
+    margin-left: 20px;
+}
+
+.slogan {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #65D2CF;
+    height: 285px;
+    padding: 0 50px;
+}
+
+.slogan img {
+    height: 150px;
+    margin-right: 20px;
+}
+
+.slogan h1 {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0;
+}
+
+
+/* Conteneur du header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Espace entre les éléments */
+    padding: 10px 20px;
+    background-color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style du logo */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacement entre le logo et le texte */
+}
+
+.logo img {
+    height: 50px; /* Ajustez selon le besoin */
+}
+
+.titre-logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #007BFF;
+}
+
+/* Navigation */
+nav {
+    flex: 1; /* Prend tout l’espace restant */
+    margin-left: 30px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 20px;
+}
+
+nav ul li {
+    display: flex;
+    gap: 20px;
+}
+
+/* Bouton Connexion */
+.nav-connexion {
+    margin-left: auto; /* Pousse le bouton connexion à droite */
+}
+
+.nav-connexion a {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+}
+
+.nav-connexion a:hover {
+    background-color: #0056b3;
+}
+
+/* Conteneur centré pour la barre de recherche */
+.search-container {
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    margin: 20px 0;
+}
+
+/* Barre de recherche stylisée */
+.search-container form {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 2px solid #007BFF;
+    border-radius: 50px; /* Arrondi pour la barre */
+    padding: 5px;
+    width: 520px; /* Largeur totale */
+    margin: 100px 0;
+}
+
+/* Champ de texte */
+.search-container input[type="text"] {
+    flex: 1; /* Prend tout l'espace disponible */
+    border: none;
+    padding: 15px 20px;
+    font-size: 18px;
+    border-radius: 40px;
+    outline: none;
+}
+
+/* Bouton de recherche */
+.search-container button {
+    background-color: #007BFF;
+    border: none;
+    color: white;
+    width: 40px; /* Taille carrée pour le bouton */
+    height: 40px;
+    border-radius: 50%; /* Forme ronde */
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+/* Effet au survol */
+.search-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsivité : réduction de la taille sur petits écrans */
+@media (max-width: 768px) {
+    header {
+        flex-direction: row; /* Assure que tout reste sur une ligne même sur petits écrans */
+        justify-content: space-between;
+    }
+
+    .logo {
+        margin-right: auto; /* Pousse le logo à gauche */
+    }
+
+    nav ul {
+        flex-direction: row; /* Maintient les liens de la navigation sur la même ligne */
+    }
+
+    nav ul li {
+        margin-left: 15px; /* Réduit l'espace entre les éléments de la nav */
+    }
+}
+
+
+/* Footer */
+footer {
+    background-color: #65D2CF;
+    padding: 40px 20px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column; /* Empile les colonnes et les logos verticalement */
+    align-items: center;
+    gap: 20px; /* Espace entre les colonnes et les logos */
+}
+
+/* Conteneur des colonnes */
+.footer-columns {
+    display: flex;
+    justify-content: space-between; /* Aligne les colonnes côte à côte */
+    gap: 20px; /* Espace entre les colonnes */
+    width: 100%; /* Prend toute la largeur disponible */
+    max-width: 1200px; /* Largeur maximale pour limiter l'étalement */
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligne le texte à gauche */
+    text-align: left;
+    flex: 1; /* Les colonnes prennent un espace égal */
+    min-width: 200px; /* Largeur minimale pour éviter qu'elles soient trop petites */
+}
+
+.footer-column h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.footer-column ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Réseaux sociaux */
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.footer-social a img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.footer-social a img:hover {
+    transform: scale(1.1); /* Agrandit légèrement l'icône au survol */
+}

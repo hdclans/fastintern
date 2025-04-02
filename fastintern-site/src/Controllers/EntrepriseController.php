@@ -1,6 +1,6 @@
 <?php
 
-require_once '../vendor/autoload.php';
+namespace App\Controllers;
 
 class EntrepriseController {
     private $twig;
