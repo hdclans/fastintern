@@ -1,4 +1,4 @@
-/* style général */
+/* Style général */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -6,8 +6,7 @@ body {
     background-color: white;
 }
 
-
-/* header */
+/* Header */
 header {
     display: flex;
     align-items: center;
@@ -56,10 +55,10 @@ nav a {
     width: 25px;
     height: 25px;
     margin-right: 8px;
-    vertical-align:middle;
+    vertical-align: middle;
 }
 
-/* slogan */
+/* Slogan */
 .mid-section {
     background-color: #65D2CF;
     padding: 40px 20px;
@@ -80,7 +79,6 @@ nav a {
     height: 110px;
     margin-right: 20px;
 }
-
 
 /* Conteneur principal */
 .offers-container {
@@ -108,42 +106,36 @@ nav a {
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Titre */
 .offer-block h3 {
     font-size: 1.5em;
     margin-bottom: 10px;
     color: #333;
 }
 
-/* Description */
 .offer-block .description {
     font-size: 0.9em;
     color: #555;
     margin-bottom: 10px;
 }
 
-/* Rémunération */
 .offer-block .remuneration {
     font-size: 0.9em;
     color: #333;
     margin-bottom: 10px;
 }
 
-/* Dates */
 .offer-block .dates {
     font-size: 0.9em;
     color: #666;
     margin-bottom: 10px;
 }
 
-/* Date de publication */
 .offer-block .publication-date {
     font-size: 0.8em;
     color: #999;
     margin-bottom: 10px;
 }
 
-/* Lien "Voir les détails" */
 .offer-block .details-link {
     display: inline-block;
     padding: 8px 12px;
@@ -185,6 +177,118 @@ nav a {
     background-color: #ddd;
 }
 
+/* Styles pour la page de détail d'une offre */
+.offer-detail-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.offer-header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.offer-header h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.company-info h2 {
+    font-size: 1.8em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.location {
+    color: #888;
+    font-size: 1.1em;
+}
+
+.offer-content {
+    margin-bottom: 40px;
+}
+
+.description-section {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.description-section h3 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.3em;
+}
+
+.description-content {
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Section d'upload */
+.upload-section {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.upload-section h3 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.file-upload {
+    margin-bottom: 15px;
+}
+
+.file-upload label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.file-upload input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.apply-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #65decf;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.apply-button:hover {
+    background-color: #0056b3;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: #666;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    color: #333;
+}
+
 /* Footer */
 footer {
     background-color: #65D2CF;
@@ -193,27 +297,22 @@ footer {
 
 .footer-content {
     display: flex;
-    flex-direction: column; /* Empile les colonnes et les logos verticalement */
+    flex-direction: column;
     align-items: center;
-    gap: 20px; /* Espace entre les colonnes et les logos */
+    gap: 20px;
 }
 
-/* Conteneur des colonnes */
 .footer-columns {
     display: flex;
-    justify-content: space-between; /* Aligne les colonnes côte à côte */
-    gap: 20px; /* Espace entre les colonnes */
-    width: 100%; /* Prend toute la largeur disponible */
-    max-width: 1200px; /* Largeur maximale pour limiter l'étalement */
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
 }
 
 .footer-column {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Aligne le texte à gauche */
-    text-align: left;
-    flex: 1; /* Les colonnes prennent un espace égal */
-    min-width: 200px; /* Largeur minimale pour éviter qu'elles soient trop petites */
+    flex: 1;
+    min-width: 200px;
 }
 
 .footer-column h3 {
@@ -226,7 +325,6 @@ footer {
 .footer-column ul {
     list-style: none;
     padding: 0;
-    margin: 0;
 }
 
 .footer-column ul li {
@@ -242,23 +340,4 @@ footer {
 
 .footer-column ul li a:hover {
     text-decoration: underline;
-}
-
-/* Réseaux sociaux */
-.footer-social {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.footer-social a img {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-
-.footer-social a img:hover {
-    transform: scale(1.1); /* Agrandit légèrement l'icône au survol */
 }

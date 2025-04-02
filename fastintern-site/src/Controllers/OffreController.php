@@ -59,4 +59,30 @@ class OffreController
             'pagination' => $pagination,
         ]);
     }
+
+    public function detail()
+{
+    // Récupérer l'ID de l'offre depuis l'URL
+    $idOffre = isset($_GET['id']) ? (int)$_GET['id'] : null;
+
+    // Vérifier si l'ID est valide
+    if (!$idOffre) {
+        header('Location: /?uri=offres'); // Rediriger vers la liste des offres si l'ID est manquant
+        exit;
+    }
+
+    // Récupérer les détails de l'offre
+    $offre = $this->offreModel->getOfferById($idOffre);
+
+    // Vérifier si l'offre existe
+    if (!$offre) {
+        header('Location: /?uri=offres'); // Rediriger si l'offre n'existe pas
+        exit;
+    }
+
+    // Afficher la vue avec les détails de l'offre
+    echo $this->twig->render('offre/offre_detail.twig', [
+        'offre' => $offre,
+    ]);
+}
 }

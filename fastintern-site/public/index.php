@@ -18,6 +18,7 @@ use App\Controllers\MentionsLegales\InfosLegalesController;
 use App\Controllers\OffreController;
 use App\Database\Database;
 use App\controllers\EntrepriseController; 
+use App\Controllers\UploadController;
 
 use App\Controllers\Admin\AdminController;
 use App\Controllers\Pilote\PiloteController;
@@ -57,6 +58,11 @@ switch ($uri) {
         $controller = new OffreController($twig, $offreModel); // Instanciation du contrôleur
         $controller->index(); // Appel de la méthode pour afficher les offres
         break;
+    case 'offre_detail':
+        $offreModel = new \App\Models\OffreModel($pdo); // Instanciation du modèle
+        $controller = new \App\Controllers\OffreController($twig, $offreModel); // Instanciation du contrôleur
+        $controller->detail(); // Appel de la méthode pour afficher les détails
+        break;
     case 'cgu':
         $controller = new CGUController($twig);
         $controller->cgu();
@@ -69,8 +75,9 @@ switch ($uri) {
         $controller = new InfosLegalesController($twig);
         $controller->InfosLegales();
         break;
-    case 'uploadCV':
-        $controller->uploadCV();
+    case 'upload_candidature':
+        $controller = new \App\Controllers\UploadController($twig, $pdo); // Ajout de $pdo
+        $controller->handleUpload();
         break;
     case 'connexion':
         $controller = new ConnexionController($twig);
