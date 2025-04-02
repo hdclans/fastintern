@@ -169,6 +169,88 @@ nav ul li {
     }
 }
 
+/* Style général pour les entreprises */
+.entreprises-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espace entre les cartes */
+    align-items: center;
+    padding: 20px;
+    background-color: #f5f5f5; /* Couleur de fond de la page */
+}
+
+/* Style des cartes d'entreprises */
+.card {
+    width: 350px; /* Largeur des cartes */
+    padding: 20px;
+    background-color: #ffffff; /* Fond blanc pour la carte */
+    border-radius: 12px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce */
+    border: 1px solid #ddd; /* Bordure légère */
+    text-align: center;
+    transition: transform 0.3s ease-in-out; /* Animation de survol */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Effet de zoom au survol */
+}
+
+/* Style pour les étoiles de notation */
+.entreprise-rating {
+    margin-top: 10px;
+}
+
+.star {
+    color: #ddd;
+}
+
+.star.filled {
+    color: #f39c12; /* Couleur des étoiles remplies */
+}
+
+/* Style des boutons */
+button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3; /* Effet survol du bouton */
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.btn-pagination {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-pagination:hover {
+    background-color: #0056b3; /* Effet survol des boutons de pagination */
+}
+
+.current-page {
+    padding: 10px 20px;
+    background-color: #f39c12;
+    color: white;
+    border-radius: 5px;
+}
+
 
 /* Footer */
 footer {

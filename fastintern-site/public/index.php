@@ -24,6 +24,7 @@ use App\Controllers\Pilote\PiloteController;
 use App\Controllers\Etudiant\EtudiantController;
 
 use App\Models\OffreModel;
+use App\Models\EntrepriseModel;
 
 // Configuration de Twig
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../src/Views');
@@ -99,8 +100,9 @@ switch ($uri) {
         $controller->forgotPassword();
         break;
     case 'entreprise':
-        $controller = new EntrepriseController($twig);
-        $controller->entreprise();
+        $entrepriseModel = new EntrepriseModel($pdo); // Instanciation du modèle Entreprise
+        $controller = new EntrepriseController($twig, $entrepriseModel); // Instanciation du contrôleur
+        $controller->index(); // Appel de la méthode pour afficher les entreprises
         break;
 
 

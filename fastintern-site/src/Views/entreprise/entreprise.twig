@@ -46,29 +46,51 @@
     </div>
 
 
-       <!-- <div class="entreprises-container">
-            {% for entreprise in entreprises %}
-                <div class="card">
-                    <h2>{{ entreprise.nom|e }}</h2>
-                    <p>{{ entreprise.description|e }}</p>
-                    <p>Tel: {{ entreprise.telephone }}</p>
-                    <p>Mail: {{ entreprise.email }}</p>
-                    <div class="entreprise-rating">
-                        {% for i in 1..5 %}
-                            {% if i <= entreprise.avis %}
-                                <span class="star filled">★</span>
-                            {% else %}
-                            <span class="star">☆</span>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
+        <div class="entreprises-container">
+    {% for entreprise in entreprises %}
+        <div class="card">
+            <h2>{{ entreprise.nom_entreprise|e }}</h2>
+            <p>{{ entreprise.description|e }}</p>
+            <p>Tel: {{ entreprise.telephone_contact|e }}</p>
+            <p>Mail: {{ entreprise.email_contact|e }}</p>
+            <p>Adresse: {{ entreprise.adresse|e }}</p>
+            <p>Création: {{ entreprise.date_creation|date('d/m/Y') }}</p>
+            <p>Modification: {{ entreprise.date_modification|date('d/m/Y') }}</p>
 
-                    <button>Laisser un avis</button>
-                </div>
-            {% else %}
-                <p>Aucune entreprise trouvée.</p>
-            {% endfor %}
-        </div> -->
+            <div class="entreprise-rating">
+                {% for i in 1..5 %}
+                    {% if i <= entreprise.avis %}
+                        <span class="star filled">★</span>
+                    {% else %}
+                        <span class="star">☆</span>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <button>Laisser un avis</button>
+        </div>
+    {% else %}
+        <p>Aucune entreprise trouvée.</p>
+    {% endfor %}
+</div>
+
+         <!-- Pagination -->
+<div class="pagination">
+    {% if currentPage > 1 %}
+        <a href="?uri=entreprise&page={{ currentPage - 1 }}" class="btn-pagination">⬅ Précédent</a>
+    {% endif %}
+
+    {% for i in 1..totalPages %}
+        {% if i == currentPage %}
+            <span class="current-page">{{ i }}</span>
+        {% else %}
+            <a href="?uri=entreprise&page={{ i }}" class="btn-pagination">{{ i }}</a>
+        {% endif %}
+    {% endfor %}
+
+    {% if currentPage < totalPages %}
+        <a href="?uri=entreprise&page={{ currentPage + 1 }}" class="btn-pagination">Suivant ➡</a>
+    {% endif %}
+</div>
    
     </main>
 
