@@ -63,6 +63,20 @@ switch ($uri) {
         $controller = new \App\Controllers\OffreController($twig, $offreModel); // Instanciation du contrôleur
         $controller->detail(); // Appel de la méthode pour afficher les détails
         break;
+    case 'admin/offres':
+        $controller = new \App\Controllers\AdminOffreController($twig, $pdo);
+        $controller->index();
+        break;
+    
+    case 'admin/offres/save':
+        $controller = new \App\Controllers\AdminOffreController($twig, $pdo);
+        $controller->save();
+        break;
+    
+    case 'admin/offres/delete':
+        $controller = new \App\Controllers\AdminOffreController($twig, $pdo);
+        $controller->delete();
+        break;
     case 'cgu':
         $controller = new CGUController($twig);
         $controller->cgu();
