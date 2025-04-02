@@ -177,6 +177,12 @@ class AdminOffreController
 
     private function deleteOffre($id)
     {
+        // Supprimer les candidatures associées à l'offre
+        $query = "DELETE FROM CANDIDATURE WHERE id_offre = :id_offre";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute(['id_offre' => $id]);
+
+        // Supprimer l'offre
         $query = "DELETE FROM OFFRE_STAGE WHERE id_offre = :id_offre";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute(['id_offre' => $id]);
