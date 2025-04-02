@@ -1,22 +1,26 @@
-{# home.twig #}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="http://fastintern-static.local/static/css/invite/home.css">
-    <title>{{ page_title|default('accueil') }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="http://fastintern-static.local/static/css/Invite/home.css">
+    <title>{{ page_title|default('FastIntern - Votre stage, en un éclair !') }}</title>
 </head>
 <body>
     <header>
         <div class="logo">
             <img src="http://fastintern-static.local/static/assets/logo.png" alt="Logo FastIntern">
-            <span class="titre-logo">{{ site_name|default('FastIntern') }}</span>
+            <span class="titre-logo">FastIntern</span>
         </div>
-        <nav>
-            <a class="btn-connexion" href="/?uri=connexion" {% if activePage == 'entreprises' %}class="active"{% endif %}>Connexion</a>
-        </nav>
+        
+        <div class="profile-container">
+            <a class="btn-connexion" href="/?uri=connexion">
+                <i class="fas fa-user-circle"></i>
+                Connexion
+            </a>
+        </div>
     </header>
     
     <main>
@@ -26,78 +30,36 @@
         </section>
         
         <div class="features">
-            {% for feature in features|default([
-                {
-                    'class': 'feature1',
-                    'color_block': 'color-block1',
-                    'title': 'Trouvez votre stage facilement !',
-                    'description': 'FastIntern est une plateforme dédiée aux étudiants du CESI en quête d\'un stage. Conçue pour simplifier la recherche et optimiser les candidatures, elle vous permet d\'accéder rapidement aux offres qui correspondent à votre profil.'
-                },
-                {
-                    'class': 'feature2',
-                    'color_block': 'color-block2',
-                    'title': 'Une interface claire et intuitive',
-                    'description': 'Pensé pour être efficace et simple d\'utilisation, FastIntern vous offre une expérience fluide : postulez en quelques clics et suivez vos candidatures en toute sérénité.'
-                },
-                {
-                    'class': 'feature3',
-                    'color_block': 'color-block3',
-                    'title': 'Un projet étudiant, une solution pour les étudiants',
-                    'description': 'Créé en 2025 par des étudiants du CESI, FastIntern répond aux besoins réels des élèves en formation. Parce qu\'on sait combien il est parfois difficile de trouver un stage, nous avons conçu un outil adapté, rapide et efficace.'
-                }
-            ]) %}
-                <div class="{{ feature.class }}">
-                    <div class="{{ feature.color_block }}"></div>
-                    <h2 class="titre feature">{{ feature.title }}</h2>
-                    <p>{{ feature.description }}</p>
+            {% if features is defined and features|length > 0 %}
+                {% for feature in features %}
+                    <div class="feature{{ loop.index }}">
+                        <div class="color-block{{ loop.index }}"></div>
+                        <h2 class="titre feature">{{ feature.title }}</h2>
+                        <p>{{ feature.description }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="feature1">
+                    <div class="color-block1"></div>
+                    <h2 class="titre feature">Trouvez votre stage facilement !</h2>
+                    <p>FastIntern est une plateforme dédiée aux étudiants du CESI en quête d'un stage. Conçue pour simplifier la recherche et optimiser les candidatures, elle vous permet d'accéder rapidement aux offres qui correspondent à votre profil.</p>
                 </div>
-            {% endfor %}
+                <div class="feature2">
+                    <div class="color-block2"></div>
+                    <h2 class="titre feature">Une interface claire et intuitive</h2>
+                    <p>Pensé pour être efficace et simple d'utilisation, FastIntern vous offre une expérience fluide : postulez en quelques clics et suivez vos candidatures en toute sérénité.</p>
+                </div>
+                <div class="feature3">
+                    <div class="color-block3"></div>
+                    <h2 class="titre feature">Un projet étudiant, une solution pour les étudiants</h2>
+                    <p>Créé en 2025 par des étudiants du CESI, FastIntern répond aux besoins réels des élèves en formation. Parce qu'on sait combien il est parfois difficile de trouver un stage, nous avons conçu un outil adapté, rapide et efficace.</p>
+                </div>
+            {% endif %}
         </div>
-        
-        <section class="identification">
-            <p>{{ identification_text|default('Pour continuer, veuillez vous identifier.') }}</p>
-            <a class="btn-connexion" href="/?uri=connexion" {% if activePage == 'entreprises' %}class="active"{% endif %}>{{ connexion_text|default('Connexion') }}</a>
-        </section>
     </main>
-    
-    <!-- footer -->
+
     <footer>
         <div class="footer-content">
-
-            <!-- <div class="bottom-title">
-                <h1>FastIntern</h1>
-            </div> -->
-
-            <!-- Colonnes avec les liens etc -->
-            <div class="footer-columns">
-                <div class="footer-column">
-                    <h3>L'emploi</h3>
-                    <ul>
-                        <li><a href="#">Offres d'emploi par ville</a></li>
-                        <li><a href="#">Offres d'emploi par secteurs</a></li>
-                        <li><a href="#">Offres d'emploi par entreprises</a></li>
-                        <li><a href="#">Offres d'emploi par mots clés</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>L'entreprise</h3>
-                    <ul>
-                        <li><a href="#">Qui sommes-nous ?</a></li>
-                        <li><a href="#">On recrute</a></li>
-                        <li><a href="#">Accès client</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Mentions légales</h3>
-                    <ul>
-                        <li><a href="/?uri=infos_legales">Informations légales</a></li>
-                        <li><a href="/?uri=cgu">CGU</a></li>
-                        <li><a href="/?uri=politique_confidentialite">Politique de confidentialité</a></li>
-                        <li><a href="#">Aide et contact</a></li>
-                    </ul>
-                </div>
-            </div>
-
             <!-- reseaux sociaux -->
             <div class="footer-social">
                 <a href="#"><img src="http://fastintern-static.local/static/assets/instagram.png" alt="Instagram"></a>
@@ -106,7 +68,13 @@
                 <a href="#"><img src="http://fastintern-static.local/static/assets/facebook.png" alt="Facebook"></a>
                 <a href="#"><img src="http://fastintern-static.local/static/assets/youtube.png" alt="YouTube"></a>
             </div>
+            
+            <div class="footer-copyright">
+                <p>&copy; {{ "now"|date("Y") }} FastIntern - {{ copyright_text|default('Tous droits réservés') }}</p>
+            </div>
         </div>
     </footer>
+    
+    <script src="http://fastintern-static.local/static/JS/Invite/home.js"></script>
 </body>
 </html>
