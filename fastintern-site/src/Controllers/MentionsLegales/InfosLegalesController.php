@@ -1,5 +1,5 @@
 <?php
-namespace App\Controllers;
+namespace App\Controllers\MentionsLegales;
 
 class InfosLegalesController {
     private $twig;
@@ -9,6 +9,6 @@ class InfosLegalesController {
     }
     
     public function InfosLegales() {
-        echo $this->twig->render('infos_legales/infos_legales.twig');
+        echo $this->twig->render('MentionsLegales/infos_legales.twig');
     }
 }

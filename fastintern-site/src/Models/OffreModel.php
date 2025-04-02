@@ -4,37 +4,43 @@
 namespace App\Models;
 
 use PDO;
+use App\Database\Database;
 
 class OffreModel
 {
     private $db;
 
-    public function __construct(PDO $db)
+    public function __construct(PDO $db = null)
     {
-        $this->db = $db;
+        if ($db === null) {
+            $database = new Database();
+            $this->db = $database->getConnection();
+        } else {
+            $this->db = $db;
+        }
     }
 
     public function getPaginatedOffers($limit, $offset)
-{
-    $query = "
-        SELECT 
-            id_offre, 
-            titre, 
-            description, 
-            remuneration, 
-            date_debut, 
-            date_fin, 
-            date_publication 
-        FROM OFFRE_STAGE 
-        LIMIT :limit OFFSET :offset
-    ";
-    $stmt = $this->db->prepare($query);
-    $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
-    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
-    $stmt->execute();
+    {
+        $query = "
+            SELECT 
+                id_offre, 
+                titre, 
+                description, 
+                remuneration, 
+                date_debut, 
+                date_fin, 
+                date_publication 
+            FROM OFFRE_STAGE 
+            LIMIT :limit OFFSET :offset
+        ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
 
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
     public function getTotalOffersCount()
     {

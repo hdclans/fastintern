@@ -1,5 +1,5 @@
 <?php
-namespace App\Controllers;
+namespace App\Controllers\Invite;
 
 class HomeController {
     private $twig;
@@ -9,7 +9,7 @@ class HomeController {
     }
     
     public function index() {
-        echo $this->twig->render('home/index.twig');
+        echo $this->twig->render('Invite/index.twig');
     }
 
 }

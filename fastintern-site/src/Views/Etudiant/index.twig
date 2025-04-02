@@ -1,0 +1,18 @@
+{% extends "Etudiant/layout/base.twig" %}
+
+{% block title %}Espace Étudiant{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Espace étudiant</h1>
+    <p>Bienvenue, {{ session.prenom }} {{ session.nom }}.</p>
+    <p>Vous êtes connecté en tant qu'étudiant.</p>
+    
+    <ul>
+        <li><a href="#">Voir les offres de stage</a></li>
+        <li><a href="#">Mes candidatures</a></li>
+    </ul>
+    
+    <p><a href="?uri=logout">Déconnexion</a></p>
+</div>
+{% endblock %}
