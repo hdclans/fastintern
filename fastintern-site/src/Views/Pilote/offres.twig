@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Offres</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="http://fastintern-static.local/static/css/Admin/offres.css">
+    <link rel="stylesheet" href="http://fastintern-static.local/static/css/layout/header.css">
+    <link rel="stylesheet" href="http://fastintern-static.local/static/css/layout/footer.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="http://fastintern-static.local/static/assets/logo.png" alt="Logo FastIntern">
+            <span class="titre-logo">FastIntern</span>
+        </div>
+        <div class="nav-container">
+            {% if session.user_id is defined %}
+                {% if session.role_id == 2 %}
+                    <nav>
+                <a class="btn-accueil" href="?uri=pilote">Accueil</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Gestion Offres</button>
+                    <div class="dropdown-content">
+                        <a href="?uri=pilote_offres">Gérer les offres</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Gestion Entreprises</button>
+                    <div class="dropdown-content">
+                        <a href="/?uri=pilote_entreprises">Gérer les entreprises</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Gestion Utilisateurs</button>
+                    <div class="dropdown-content">
+                        <a href="?uri=pilote_etudiants">Gérer les étudiants</a>
+                        <a href="?uri=pilote_pilotes">Gérer les pilotes</a>
+                    </div>
+                </div>
+            </nav>
+            
+            <div class="profile-container">
+                <a class="btn-profile" href="?uri=pilote_profil">
+                    <i class="fas fa-user-circle"></i>
+                    Mon Profil
+                </a>
+            </div>
+                {% endif %}
+            {% endif %}
+        </div>
+    </header>
+
+    <main class="pilote-container">
+        <div class="actions-header">
+            <h1>Gestion des Offres</h1>
+            <button class="btn-create" onclick="toggleForm()">Créer une nouvelle offre</button>
+        </div>
+
+        <!-- Formulaire de création/modification -->
+        <div id="offreForm" class="form-container" style="display: none;">
+            <h2 id="formTitle">Créer une nouvelle offre</h2>
+            <form action="?uri=pilote_offres_save" method="POST">
+                <input type="hidden" name="id_offre" id="id_offre">
+
+                <div class="form-group">
+                    <label for="titre">Titre *</label>
+                    <input type="text" id="titre" name="titre" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description *</label>
+                    <textarea id="description" name="description" required rows="5"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="remuneration">Rémunération (€/mois)</label>
+                    <input type="number" id="remuneration" name="remuneration" min="0">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date_debut">Date de début *</label>
+                        <input type="date" id="date_debut" name="date_debut" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date_fin">Date de fin *</label>
+                        <input type="date" id="date_fin" name="date_fin" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="nom_entreprise">Nom de l'entreprise *</label>
+                    <input type="text" id="nom_entreprise" name="nom_entreprise" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email_contact">Email de contact *</label>
+                    <input type="email" id="email_contact" name="email_contact" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telephone_contact">Téléphone de contact</label>
+                    <input type="tel" id="telephone_contact" name="telephone_contact">
+                </div>
+
+                <div class="form-group">
+                    <label for="adresse">Adresse de l'entreprise *</label>
+                    <input type="text" id="adresse" name="adresse" required>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit">Enregistrer</button>
+                    <button type="button" class="btn-cancel" onclick="toggleForm()">Annuler</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="search-container">
+            <form action="?uri=pilote_offres" method="GET" class="search-form">
+                <input type="hidden" name="uri" value="pilote_offres">
+                <input type="text" name="search" placeholder="Rechercher par nom d'entreprise" value="{{ search|default('') }}">
+                <button type="submit" class="btn-search">Rechercher</button>
+            </form>
+        </div>
+
+        <!-- Tableau des offres -->
+        <div class="table-container">
+            <table class="offres-table">
+                <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Entreprise</th>
+                        <th>Date début</th>
+                        <th>Date fin</th>
+                        <th>Rémunération</th>
+                        <th>Statut</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for offre in offres %}
+                    <tr>
+                        <td>{{ offre.titre }}</td>
+                        <td>{{ offre.nom_entreprise }}</td>
+                        <td>{{ offre.date_debut|date('d/m/Y') }}</td>
+                        <td>{{ offre.date_fin|date('d/m/Y') }}</td>
+                        <td>{{ offre.remuneration ? offre.remuneration ~ ' €' : 'Non précisée' }}</td>
+                        <td>{{ offre.statut }}</td>
+                        <td class="actions">
+                            <button onclick="editOffre({{ offre.id_offre }}, '{{ offre.titre }}', '{{ offre.description }}', {{ offre.remuneration }}, '{{ offre.date_debut }}', '{{ offre.date_fin }}', '{{ offre.nom_entreprise }}')" class="btn-edit">Modifier</button>
+                            <button onclick="deleteOffre({{ offre.id_offre }})" class="btn-delete">Supprimer</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+   <footer>
+        <div class="footer-content">
+            <div class="footer-columns">
+                {% if footerColumns is defined and footerColumns|length > 0 %}
+                    {% for column in footerColumns %}
+                        <div class="footer-column">
+                            <h3>{{ column.title }}</h3>
+                            <ul>
+                                {% for link in column.links %}
+                                    <li><a href="{{ link.url }}">{{ link.text }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="footer-column">
+                        <h3>L'emploi</h3>
+                        <ul>
+                            <li><a href="#">Offres d'emploi par ville</a></li>
+                            <li><a href="#">Offres d'emploi par secteurs</a></li>
+                            <li><a href="#">Offres d'emploi par entreprises</a></li>
+                            <li><a href="#">Offres d'emploi par mots clés</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>L'entreprise</h3>
+                        <ul>
+                            <li><a href="#">Qui sommes-nous ?</a></li>
+                            <li><a href="#">On recrute</a></li>
+                            <li><a href="#">Accès client</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Mentions légales</h3>
+                        <ul>
+                            <li><a href="#">Informations légales</a></li>
+                            <li><a href="#">CGU</a></li>
+                            <li><a href="#">Politique de confidentialité</a></li>
+                            <li><a href="#">Aide et contact</a></li>
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="footer-social">
+                    <a href="#"><img src="http://fastintern-static.local/static/assets/instagram.png" alt="Instagram"></a>
+                    <a href="#"><img src="http://fastintern-static.local/static/assets/x.png" alt="X"></a>
+                    <a href="#"><img src="http://fastintern-static.local/static/assets/linkedin.png" alt="LinkedIn"></a>
+                    <a href="#"><img src="http://fastintern-static.local/static/assets/facebook.png" alt="Facebook"></a>
+                    <a href="#"><img src="http://fastintern-static.local/static/assets/youtube.png" alt="YouTube"></a>
+            </div>
+            
+            <div class="footer-copyright">
+                <p>&copy; {{ "now"|date("Y") }} FastIntern - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="http://fastintern-static.local/static/JS/Admin/offres.js"></script>
+    <script src="http://fastintern-static.local/static/JS/layout/header.js"></script>
+    <script src="http://fastintern-static.local/static/JS/layout/footer.js"></script>
+</body>
+</html>

@@ -24,6 +24,9 @@ use App\Controllers\Admin\AdminEntrepriseController;
 use App\Controllers\Admin\AdminEtudiantController;
 use App\Controllers\Admin\AdminPiloteController;
 use App\Controllers\Pilote\PiloteController;
+use App\Controllers\Pilote\PiloteOffreController;
+use App\Controllers\Pilote\PiloteEntrepriseController;
+use App\Controllers\Pilote\PiloteEtudiantController;
 use App\Controllers\Etudiant\EtudiantOffreController;
 use App\Controllers\Etudiant\EtudiantController;
 
@@ -67,7 +70,11 @@ $role_routes = [
           'admin_entreprises', 'admin_entreprises_save', 'admin_entreprises_delete',
           'admin_etudiants', 'admin_etudiants_save', 'admin_etudiants_delete',
           'admin_pilotes', 'admin_pilotes_save', 'admin_pilotes_delete'], // Admin
-    2 => ['pilote', 'pilote_profil', 'logout'], // Pilote
+    2 => ['pilote', 'pilote_profil', 'logout', 
+          'pilote_offres', 'pilote_offres_save', 'pilote_offres_delete',
+          'pilote_entreprises', 'pilote_entreprises_save', 'pilote_entreprises_delete',
+          'pilote_etudiants', 'pilote_etudiants_save', 'pilote_etudiants_delete',
+          'pilote_pilotes', 'pilote_pilotes_save', 'pilote_pilotes_delete'], // Pilote
     3 => ['etudiant', 'etudiant_profil', 'logout', 'offres', 'detail', 'entreprise'], // Ajoutez 'entreprise'
 ];
 
@@ -205,6 +212,65 @@ switch ($uri) {
         $controller = new PiloteController($twig);
         $controller->profil();
         break;
+    
+    case 'pilote_offres':
+        $controller = new PiloteOffreController($twig, $pdo);
+        $controller->offres();
+        break;
+
+    case 'pilote_offres_save':
+        $controller = new PiloteOffreController($twig, $pdo);
+        $controller->save();
+        break;
+    case 'pilote_offres_delete':
+        $controller = new PiloteOffreController($twig, $pdo);
+        $controller->delete();
+        break;
+        
+    case 'pilote_entreprises':
+        $controller = new \App\Controllers\pilote\PiloteEntrepriseController($twig, $pdo);
+        $controller->index();
+        break;
+    
+    case 'pilote_entreprises_save':
+        $controller = new \App\Controllers\pilote\PiloteEntrepriseController($twig, $pdo);
+        $controller->save();
+        break;
+    
+    case 'pilote_entreprises_delete':
+        $controller = new \App\Controllers\pilote\PiloteEntrepriseController($twig, $pdo);
+        $controller->delete();
+        break;
+    
+    case 'pilote_etudiants':
+        $controller = new PiloteEtudiantController($twig, $pdo);
+        $controller->index();
+        break;
+        
+    case 'pilote_etudiants_save':
+        $controller = new PiloteEtudiantController($twig, $pdo);
+        $controller->save();
+        break;
+    
+    case 'pilote_etudiants_delete':
+        $controller = new PiloteEtudiantController($twig, $pdo);
+        $controller->delete();
+        break;
+    
+    case 'pilote_pilotes':
+        $controller = new PilotePiloteController($twig, $pdo);
+        $controller->index();
+        break;
+    
+    case 'pilote_pilotes_save':
+        $controller = new PilotePiloteController($twig, $pdo);
+        $controller->save();
+        break;
+    
+    case 'pilote_pilotes_delete':
+        $controller = new PilotePiloteController($twig, $pdo);
+        $controller->delete();
+        break;    
         
     // Routes de l'étudiant
     case 'etudiant':
