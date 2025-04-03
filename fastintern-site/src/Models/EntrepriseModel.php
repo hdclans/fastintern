@@ -56,4 +56,21 @@ class EntrepriseModel {
         return $result['total'];
     }
     
+    public function countSearchEntreprises($search) {
+        $sql = "SELECT COUNT(*) as total FROM ENTREPRISE WHERE nom_entreprise LIKE :search OR description LIKE :search";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(['search' => '%' . $search . '%']);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['total'];
+    }
+
+    public function searchEntreprises($search, $limit, $offset) {
+        $sql = "SELECT * FROM ENTREPRISE WHERE nom_entreprise LIKE :search OR description LIKE :search LIMIT :limit OFFSET :offset";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':search', '%' . $search . '%', \PDO::PARAM_STR);
+        $stmt->bindValue(':limit', $limit, \PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, \PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }
