@@ -7,6 +7,7 @@ Dans un premier temps, l'utilisateur arrive sur une interface. Cette interface p
 Sur cette interface, nous pouvons retrouver un bouton afin de s'authentifier.
 Sur cette interface, nous retrouverons également les mentions légales (informations légales, CGU, politique de confidentialité et Aide et contact), nous retrouvons également des offres d'emploies à consulter en fonction du secteur, de la ville, des entreprises ou même par mor clés. Les contacts ainsi que les réseau sociaux sont également indiqué.
 
+
 ## Connexion
 
 Sur notre interface, nous pouvons retrouver un bouton "connexion". Ce bouton permettra donc à l'utilisateur de s'identifier, afin de rentré dans son compte. 
@@ -110,6 +111,27 @@ En effet sur l'interface pilote, nous retrouvons deux pages : Une page afin de g
             ├───Auth
             ├───Invite
             └───layout
+
+Voici notre structure de projet. 
+
+Comme nous pouvons le voir, nous retrouvons notre site fastintern, qui est le coeur de notre application web. Nous retrouvons entre autre nos controllers, qui nous permettrons de gerer nos requetes HTTP. Nous trouvons également nos views, qui contiennent nos templates (twig)pour l'affichage.
+Nous avons chaques dossiers correpondant à un rôle specifique de l'application.
+Nous pouvons également voir "Vendor", correpondant à toutes les bibliothèque PHP utilisé pour ce projet.
+
+Nous retrouvons également notre fastintern static, comprenant nos assets (images, police...)
+Nous retrouvons nos feuiles de styles (css), ainsi que nos JS (script javascript)
+
+
+## Requis 
+
+Pour réaliser ce projet, nous avions eu besoin de PHP bien évidemment.
+Nous avions également eu besoin de MYSQL, de composer. Nous avons également utiliser Apache, et également XAMPP.
+
+## Trello
+
+Voici ci-joint notre trello utiliser pour notre projet :
+https://trello.com/invite/b/67a5dce636de430210ca2efe/ATTI30912b0a6b1f29210e270eafe86032af10E5244C/web4all
+
 
             
 
