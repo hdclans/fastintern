@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Pilotes</title>
+    <link rel="stylesheet" href="http://fastintern-static.local/static/css/admin.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="http://fastintern-static.local/static/assets/logo.png" alt="Logo FastIntern">
+            <span>FastIntern - Administration</span>
+        </div>
+        <nav>
+            <a href="/?uri=admin">Accueil</a>
+            <a href="/?uri=admin/pilotes" class="active">Gestion des Pilotes</a>
+            <a href="/?uri=logout" class="btn-logout">Déconnexion</a>
+        </nav>
+    </header>
+
+    <main class="admin-container">
+        <div class="actions-header">
+            <h1>Gestion des Pilotes</h1>
+            <button class="btn-create" onclick="toggleForm()">Créer un nouveau pilote</button>
+        </div>
+
+        <!-- Formulaire de création/modification -->
+        <div id="piloteForm" class="form-container" style="display: none;">
+            <h2 id="formTitle">Créer un nouveau pilote</h2>
+            <form action="/?uri=admin/pilotes/save" method="POST">
+                <input type="hidden" name="id_utilisateur" id="id_utilisateur">
+
+                <div class="form-group">
+                    <label for="nom">Nom *</label>
+                    <input type="text" id="nom" name="nom" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="prenom">Prénom *</label>
+                    <input type="text" id="prenom" name="prenom" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="mot_de_passe">Mot de passe <span id="password-info">(laisser vide pour conserver l'actuel)</span></label>
+                    <input type="password" id="mot_de_passe" name="mot_de_passe">
+                </div>
+
+                <div class="form-group">
+                    <label for="id_role">Rôle *</label>
+                    <select id="id_role" name="id_role" required>
+                        <option value="1">Administrateur</option>
+                        <option value="2" selected>Pilote</option>
+                        <option value="3">Étudiant</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit">Enregistrer</button>
+                    <button type="button" class="btn-cancel" onclick="toggleForm()">Annuler</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Recherche -->
+        <div class="search-container">
+            <form action="/?uri=admin/pilotes" method="GET" class="search-form">
+                <input type="hidden" name="uri" value="admin/pilotes">
+                <input type="text" name="search" placeholder="Rechercher par nom, prénom ou email" value="{{ search|default('') }}">
+                <button type="submit" class="btn-search">Rechercher</button>
+            </form>
+        </div>
+
+        <!-- Tableau des pilotes -->
+        <div class="table-container">
+            <table class="offres-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Email</th>
+                        <th>Rôle</th>
+                        <th>Date d'inscription</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for utilisateur in utilisateurs %}
+                    <tr>
+                        <td>{{ utilisateur.id_utilisateur }}</td>
+                        <td>{{ utilisateur.nom }}</td>
+                        <td>{{ utilisateur.prenom }}</td>
+                        <td>{{ utilisateur.email }}</td>
+                        <td>{{ utilisateur.nom_role }}</td>
+                        <td>{{ utilisateur.date_inscription|date('d/m/Y') }}</td>
+                        <td class="actions">
+                            <button onclick="editPilote({{ utilisateur.id_utilisateur }}, '{{ utilisateur.nom }}', '{{ utilisateur.prenom }}', '{{ utilisateur.email }}', {{ utilisateur.id_role }})" class="btn-edit">Modifier</button>
+                            <button onclick="confirmDelete({{ utilisateur.id_utilisateur }})" class="btn-delete">Supprimer</button>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="7" class="no-data">Aucun pilote trouvé</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="http://fastintern-static.local/static/js/Admin/pilotes.js"></script>
+</body>
+</html>
