@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Admin - FastIntern</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="http://fastintern-static.local/static/css/Admin/home.css">
+    <link rel="stylesheet" href="http://fastintern-static.local/static/css/Admin/profil.css">
     <link rel="stylesheet" href="http://fastintern-static.local/static/css/layout/header.css">
     <link rel="stylesheet" href="http://fastintern-static.local/static/css/layout/footer.css">
+    <title>Mon Profil - FastIntern</title>
 </head>
 <body>
-<header>
+    <header>
         <div class="logo">
             <img src="http://fastintern-static.local/static/assets/logo.png" alt="Logo FastIntern">
             <span class="titre-logo">FastIntern</span>
@@ -54,43 +54,76 @@
             {% endif %}
         </div>
     </header>
-
+    
     <main>
-        <section class="slogan">
-            <img src="http://fastintern-static.local/static/assets/cloud.png" alt="cloud">
-            <h1>{{ slogan|default('Votre stage, en un éclair !') }}</h1>
-        </section>
-        
-        <div class="features">
-            {% if features is defined and features|length > 0 %}
-                {% for feature in features %}
-                    <div class="feature{{ loop.index }}">
-                        <div class="color-block{{ loop.index }}"></div>
-                        <h2 class="titre feature">{{ feature.title }}</h2>
-                        <p>{{ feature.description }}</p>
+        <section class="profil-section">
+            <div class="profil-container">
+                <h1 class="titre-profil">Mon Profil</h1>
+                
+                <div class="profil-box">
+                    <div class="profil-header">
+                        <div class="profil-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="profil-info-role">
+                            <h2 id="nom-complet">{{ session.prenom }} {{ session.nom }}</h2>
+                            <span id="role-utilisateur" class="badge-role">{{ role }}</span>
+                        </div>
                     </div>
-                {% endfor %}
-            {% else %}
-                <div class="feature1">
-                    <div class="color-block1"></div>
-                    <h2 class="titre feature">Trouvez votre stage facilement !</h2>
-                    <p>FastIntern est une plateforme dédiée aux étudiants du CESI en quête d'un stage. Conçue pour simplifier la recherche et optimiser les candidatures, elle vous permet d'accéder rapidement aux offres qui correspondent à votre profil.</p>
+                    
+                    <div class="profil-details">
+                        <div class="detail-item">
+                            <div class="detail-label">
+                                <i class="fas fa-envelope"></i>
+                                <span>Email</span>
+                            </div>
+                            <div class="detail-value" id="email-utilisateur">
+                                {{ session.email }}
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">
+                                <i class="fas fa-user"></i>
+                                <span>Prénom</span>
+                            </div>
+                            <div class="detail-value" id="prenom-utilisateur">
+                                {{ session.prenom }}
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">
+                                <i class="fas fa-user"></i>
+                                <span>Nom</span>
+                            </div>
+                            <div class="detail-value" id="nom-utilisateur">
+                                {{ session.nom }}
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Date d'inscription</span>
+                            </div>
+                            <div class="detail-value" id="date-inscription">
+                                {{ session.date_inscription }}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profil-actions">
+                        <a href="?uri=logout" class="btn-deconnexion">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Déconnexion
+                        </a>
+                    </div>
                 </div>
-                <div class="feature2">
-                    <div class="color-block2"></div>
-                    <h2 class="titre feature">Une interface claire et intuitive</h2>
-                    <p>Pensé pour être efficace et simple d'utilisation, FastIntern vous offre une expérience fluide : postulez en quelques clics et suivez vos candidatures en toute sérénité.</p>
-                </div>
-                <div class="feature3">
-                    <div class="color-block3"></div>
-                    <h2 class="titre feature">Un projet étudiant, une solution pour les étudiants</h2>
-                    <p>Créé en 2025 par des étudiants du CESI, FastIntern répond aux besoins réels des élèves en formation. Parce qu'on sait combien il est parfois difficile de trouver un stage, nous avons conçu un outil adapté, rapide et efficace.</p>
-                </div>
-            {% endif %}
-        </div>
+            </div>
+        </section>
     </main>
-
-    <footer>
+   <footer>
         <div class="footer-content">
             <div class="footer-columns">
                 {% if footerColumns is defined and footerColumns|length > 0 %}
@@ -148,7 +181,7 @@
         </div>
     </footer>
 
-    <script src="http://fastintern-static.local/static/JS/Admin/home.js"></script>
+    <script src="http://fastintern-static.local/static/JS/Admin/profil.js"></script>
     <script src="http://fastintern-static.local/static/JS/layout/header.js"></script>
     <script src="http://fastintern-static.local/static/JS/layout/footer.js"></script>
 </body>

@@ -16,5 +16,9 @@ class AdminController
         echo $this->twig->render('Admin/index.twig');
     }
     
-    // Autres méthodes pour l'administration
+    public function profil()
+    {
+        echo $this->twig->render('Admin/profil.twig');
+    }
+    
 }

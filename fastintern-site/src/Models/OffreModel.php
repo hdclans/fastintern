@@ -1,5 +1,4 @@
 <?php
-// filepath: c:\xampp\htdocs\fastintern1\fastintern\fastintern-site\src\Models\OffreModel.php
 
 namespace App\Models;
 

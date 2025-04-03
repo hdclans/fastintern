@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="http://fastintern-static.local/static/css/layout/header.css">
     <link rel="stylesheet" href="http://fastintern-static.local/static/css/Invite/home.css">
-    <title>{{ page_title|default('FastIntern - Votre stage, en un éclair !') }}</title>
+    <link rel="stylesheet" href="http://fastintern-static.local/static/css/layout/footer.css">
+    <title>{{ page_title|default('Accueil - FastIntern') }}</title>
 </head>
 <body>
     <header>
@@ -59,22 +61,25 @@
     </main>
 
     <footer>
-        <div class="footer-content">
-            <!-- reseaux sociaux -->
-            <div class="footer-social">
-                <a href="#"><img src="http://fastintern-static.local/static/assets/instagram.png" alt="Instagram"></a>
-                <a href="#"><img src="http://fastintern-static.local/static/assets/x.png" alt="X"></a>
-                <a href="#"><img src="http://fastintern-static.local/static/assets/linkedin.png" alt="LinkedIn"></a>
-                <a href="#"><img src="http://fastintern-static.local/static/assets/facebook.png" alt="Facebook"></a>
-                <a href="#"><img src="http://fastintern-static.local/static/assets/youtube.png" alt="YouTube"></a>
-            </div>
-            
-            <div class="footer-copyright">
-                <p>&copy; {{ "now"|date("Y") }} FastIntern - {{ copyright_text|default('Tous droits réservés') }}</p>
-            </div>
+    <div class="footer-content">
+        <!-- Réseaux sociaux -->
+        <div class="footer-social">
+            <a href="#"><img src="http://fastintern-static.local/static/assets/instagram.png" alt="Instagram"></a>
+            <a href="#"><img src="http://fastintern-static.local/static/assets/x.png" alt="X"></a>
+            <a href="#"><img src="http://fastintern-static.local/static/assets/linkedin.png" alt="LinkedIn"></a>
+            <a href="#"><img src="http://fastintern-static.local/static/assets/facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="http://fastintern-static.local/static/assets/youtube.png" alt="YouTube"></a>
         </div>
-    </footer>
+        
+        <!-- Copyright -->
+        <div class="footer-copyright">
+            <p>&copy; {{ "now"|date("Y") }} FastIntern - {{ copyright_text|default('Tous droits réservés') }}</p>
+        </div>
+    </div>
+</footer>
     
+    <script src="http://fastintern-static.local/static/JS/layout/header.js"></script>
     <script src="http://fastintern-static.local/static/JS/Invite/home.js"></script>
+    <script src="http://fastintern-static.local/static/JS/layout/footer.js"></script>
 </body>
 </html>

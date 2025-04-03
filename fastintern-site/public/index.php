@@ -1,6 +1,6 @@
 <?php
 // Démarre la session en début de fichier
-session_start();
+session_start();    
 
 // Charge l'autoloader de Composer
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -9,25 +9,22 @@ require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../src/Models/User.php';
 
 // Définit le namespace des contrôleurs
+use App\Controllers\Erreur404Controller;
+use App\Controllers\OffreController;
+use App\Controllers\EntrepriseController; 
+use App\Controllers\UploadController;
+
+use App\Database\Database;
+
 use App\Controllers\Invite\HomeController;
 use App\Controllers\Auth\ConnexionController;
-use App\Controllers\Erreur404Controller;
-use App\Controllers\MentionsLegales\CGUController;
-use App\Controllers\MentionsLegales\PolitiqueConfidentialiteController;
-use App\Controllers\MentionsLegales\InfosLegalesController;
-use App\Controllers\OffreController;
-use App\Database\Database;
-use App\controllers\EntrepriseController; 
-use App\Controllers\UploadController;
-use App\Controllers\Admin\AdminOffreController;
-use App\Controllers\Admin\AdminEntrepriseController;
-
 use App\Controllers\Admin\AdminController;
+use App\Controllers\Admin\AdminOffreController;
 use App\Controllers\Pilote\PiloteController;
+use App\Controllers\Etudiant\EtudiantOffreController;
 use App\Controllers\Etudiant\EtudiantController;
 
 use App\Models\OffreModel;
-use App\Models\EntrepriseModel;
 
 // Configuration de Twig
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../src/Views');
@@ -50,177 +47,133 @@ if (isset($_GET['uri'])) {
     $uri = 'index';
 }
 
+// Liste des routes publiques (accessibles sans connexion)
+$public_routes = ['index', 'connexion', 'login', 'forgot-password'];
+
+// Vérifier si l'utilisateur est connecté pour les routes protégées
+if (!isset($_SESSION['user_id']) && !in_array($uri, $public_routes)) {
+    // Rediriger vers la page de connexion si non connecté
+    header('Location: ?uri=connexion');
+    exit;
+}
+
+// Définir les routes autorisées par rôle
+$role_routes = [
+    1 => ['admin', 'admin_profil', 'logout','admin_offres','admin_offres_save','admin_offres_delete'], // Admin
+    2 => ['pilote', 'pilote_profil', 'logout'], // Pilote
+    3 => ['etudiant', 'etudiant_profil', 'logout','offres','detail'], // Étudiant
+];
+
+// Si l'utilisateur est connecté, vérifier s'il a accès à la route demandée
+if (isset($_SESSION['user_id']) && !in_array($uri, $public_routes)) {
+    $role_id = $_SESSION['role_id'];
+    
+    // Si la route n'est pas autorisée pour ce rôle et n'est pas une route publique
+    if (!in_array($uri, $role_routes[$role_id])) {
+        // Rediriger vers sa page d'accueil selon son rôle
+        switch ($role_id) {
+            case 1:
+                header('Location: ?uri=admin');
+                break;
+            case 2:
+                header('Location: ?uri=pilote');
+                break;
+            case 3:
+                header('Location: ?uri=etudiant');
+                break;
+            default:
+                header('Location: ?uri=index');
+                break;
+        }
+        exit;
+    }
+}
+
 switch ($uri) {
     case 'index':
         $controller = new HomeController($twig);
         $controller->index();
         break;
-    case 'offres': // Nouveau cas pour les offres
-        $offreModel = new OffreModel($pdo); // Instanciation du modèle
-        $controller = new OffreController($twig, $offreModel); // Instanciation du contrôleur
-        $controller->index(); // Appel de la méthode pour afficher les offres
-        break;
-    case 'offre_detail':
-        $offreModel = new \App\Models\OffreModel($pdo); // Instanciation du modèle
-        $controller = new \App\Controllers\OffreController($twig, $offreModel); // Instanciation du contrôleur
-        $controller->detail(); // Appel de la méthode pour afficher les détails
-        break;
-
         
-    // Routes pour la gestion des offres
-    case 'admin/offres':
-        $controller = new \App\Controllers\AdminOffreController($twig, $pdo);
-        $controller->index();
-        break;
-    case 'admin/offres/save':
-        $controller = new \App\Controllers\AdminOffreController($twig, $pdo);
-        $controller->save();
-        break;
-    case 'admin/offres/delete':
-        $controller = new \App\Controllers\AdminOffreController($twig, $pdo);
-        $controller->delete();
-        break;
-    case 'admin/entreprises':
-        $controller = new \App\Controllers\Admin\AdminEntrepriseController($twig, $pdo);
-        $controller->index();
-        break;
-    case 'admin/entreprises/save':
-        $controller = new \App\Controllers\Admin\AdminEntrepriseController($twig, $pdo);
-        $controller->save();
-        break;
-    case 'admin/entreprises/delete':
-        $controller = new \App\Controllers\Admin\AdminEntrepriseController($twig, $pdo);
-        $controller->delete();
-        break;
-
-
-
-    // Routes pour la gestion des utilisateurs
-    case 'admin/etudiants':
-        $controller = new \App\Controllers\AdminEtudiantController($twig, $pdo);
-        $controller->index();
-        break;
-    case 'admin/etudiants/save':
-        $controller = new \App\Controllers\AdminEtudiantController($twig, $pdo);
-        $controller->save();
-        break;
-    case 'admin/etudiants/delete':
-        $controller = new \App\Controllers\AdminEtudiantController($twig, $pdo);
-        $controller->delete();
-        break;
-
-    case 'admin/pilotes':
-        $controller = new \App\Controllers\AdminPiloteController($twig, $pdo);
-        $controller->index();
-        break;
-    case 'admin/pilotes/save':
-        $controller = new \App\Controllers\AdminPiloteController($twig, $pdo);
-        $controller->save();
-        break;
-    case 'admin/pilotes/delete':
-        $controller = new \App\Controllers\AdminPiloteController($twig, $pdo);
-        $controller->delete();
-        break;
-    
-    case 'admin/admins':
-        $controller = new \App\Controllers\AdminAdminController($twig, $pdo);
-        $controller->index();
-        break;
-    case 'admin/admins/save':
-        $controller = new \App\Controllers\AdminAdminController($twig, $pdo);
-        $controller->save();
-        break;
-    case 'admin/admins/delete':
-        $controller = new \App\Controllers\AdminAdminController($twig, $pdo);
-        $controller->delete();
-        break;
-
-
-
-
-
-    // Routes pour les mentions légales
-    case 'cgu':
-        $controller = new CGUController($twig);
-        $controller->cgu();
-        break;
-    case 'politique_confidentialite':
-        $controller = new PolitiqueConfidentialiteController($twig);
-        $controller->politique_confidentialite();
-        break;
-    case 'infos_legales':
-        $controller = new InfosLegalesController($twig);
-        $controller->InfosLegales();
-        break;
-    case 'upload_candidature':
-        $controller = new \App\Controllers\UploadController($twig, $pdo); // Ajout de $pdo
-        $controller->handleUpload();
-        break;
     case 'connexion':
         $controller = new ConnexionController($twig);
         $controller->connexion();
         break;
-    case 'addEntreprise':
-        $controller->addEntreprise();
-        break;
-    case 'deleteEntreprise':
-        $controller->deleteEntreprise();
-        break;
-
-     // Routes d'authentification
-    case 'connexion':
-        $controller = new ConnexionController($twig);
-        $controller->connexion();
-        break;
+        
     case 'login':
         $controller = new ConnexionController($twig);
         $controller->login();
         break;
+        
     case 'logout':
         $controller = new ConnexionController($twig);
         $controller->logout();
         break;
+        
     case 'forgot-password':
+        $controller = new ConnexionController($twig);
         $controller->forgotPassword();
         break;
-    case 'entreprise':
-        $entrepriseModel = new EntrepriseModel($pdo); // Instanciation du modèle Entreprise
-        $controller = new EntrepriseController($twig, $entrepriseModel); // Instanciation du contrôleur
-        $controller->index(); // Appel de la méthode pour afficher les entreprises
-        break;
 
-
-    // Espaces utilisateurs
+    // Routes de l'admin
     case 'admin':
-        // Vérification des droits pour l'admin
-        if (!isset($_SESSION['user_id']) || $_SESSION['role_id'] != 1) {
-            header('Location: ?uri=connexion');
-            exit;
-        }
         $controller = new AdminController($twig);
         $controller->index();
         break;
+        
+    case 'admin_profil':
+        $controller = new AdminController($twig);
+        $controller->profil();
+        break;
+
+    case 'admin_offres':
+        $controller = new AdminOffreController($twig, $pdo);
+        $controller->offres();
+        break;
+
+    case 'admin_offres_save':
+        $controller = new AdminOffreController($twig, $pdo);
+        $controller->save();
+        break;
+    case 'admin_offres_delete':
+        $controller = new AdminOffreController($twig, $pdo);
+        $controller->delete();
+        break;
+        
+    // Routes du pilote
     case 'pilote':
-        // Vérification des droits pour le pilote
-        if (!isset($_SESSION['user_id']) || $_SESSION['role_id'] != 2) {
-            header('Location: ?uri=connexion');
-            exit;
-        }
         $controller = new PiloteController($twig);
         $controller->index();
         break;
+        
+    case 'pilote_profil':
+        $controller = new PiloteController($twig);
+        $controller->profil();
+        break;
+        
+    // Routes de l'étudiant
     case 'etudiant':
-        // Vérification des droits pour l'étudiant
-        if (!isset($_SESSION['user_id']) || $_SESSION['role_id'] != 3) {
-            header('Location: ?uri=connexion');
-            exit;
-        }
         $controller = new EtudiantController($twig);
         $controller->index();
         break;
+        
+    case 'etudiant_profil':
+        $controller = new EtudiantController($twig);
+        $controller->profil();
+        break;
 
+    case 'offres':
+        $offreModel = new OffreModel($pdo); // Instanciation du modèle
+        $controller = new EtudiantOffreController($twig, $offreModel);
+        $controller->index();
+        break;
 
-    // Routes pour les offres
+    case 'detail':
+        $offreModel = new OffreModel($pdo); // Instanciation du modèle
+        $controller = new EtudiantOffreController($twig, $offreModel); // Instanciation du contrôleur
+        $controller->detail(); // Appel de la méthode pour afficher les détails
+        break;   
+
     default:
         $controller = new Erreur404Controller($twig);
         $controller->erreur404();

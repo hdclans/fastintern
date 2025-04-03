@@ -16,5 +16,8 @@ class PiloteController
         echo $this->twig->render('Pilote/index.twig');
     }
     
-    // Autres méthodes pour les pilotes
+    public function profil()
+    {
+        echo $this->twig->render('Pilote/profil.twig');
+    }
 }
