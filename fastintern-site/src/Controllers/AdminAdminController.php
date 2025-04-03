@@ -114,7 +114,7 @@ class AdminAdminController
                 'nom' => $nom,
                 'prenom' => $prenom,
                 'email' => $email,
-                'mot_de_passe' => password_hash($mot_de_passe, PASSWORD_DEFAULT),
+                'mot_de_passe' => $mot_de_passe,
                 'id_role' => $id_role,
                 'id_utilisateur' => $id
             ]);
@@ -148,7 +148,7 @@ class AdminAdminController
             'nom' => $nom,
             'prenom' => $prenom,
             'email' => $email,
-            'mot_de_passe' => password_hash($mot_de_passe, PASSWORD_DEFAULT),
+            'mot_de_passe' => $mot_de_passe,
             'id_role' => $id_role,
             'date_inscription' => date('Y-m-d H:i:s')
         ]);
