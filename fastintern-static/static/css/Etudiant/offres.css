@@ -1,0 +1,342 @@
+/* Styles pour les offres */
+
+/* Styles généraux */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Section slogan */
+.mid-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.highlight {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #65D2CF, #4ECDC4);
+    width: 100%;
+    padding: 30px 0;
+    color: white;
+    font-size: 28px;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(101, 210, 207, 0.3);
+}
+
+.highlight img {
+    height: 60px;
+    margin-right: 20px;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
+}
+
+/* Section des offres */
+.offers-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 50px;
+}
+
+.offers-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.offer-block {
+    background-color: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.offer-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.offer-block h3 {
+    color: #007bb2;
+    font-size: 18px;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.offer-block .company {
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.offer-block .description {
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.offer-block .remuneration {
+    color: #4ECDC4;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.offer-block .dates {
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.offer-block .publication-date {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+.offer-block .details-link {
+    display: inline-block;
+    background: linear-gradient(135deg, #007bb2, #0091d2);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0, 123, 178, 0.3);
+}
+
+.offer-block .details-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 123, 178, 0.4);
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 40px;
+}
+
+.pagination a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 0 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pagination a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.12);
+}
+
+.pagination a.active {
+    background: linear-gradient(135deg, #007bb2, #0091d2);
+    color: white;
+}
+
+.pagination .prev,
+.pagination .next {
+    min-width: auto;
+    padding: 0 20px;
+}
+
+/* Détail d'une offre */
+.offer-detail {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    margin: 40px 0;
+}
+
+.offer-detail h1 {
+    color: #007bb2;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.offer-meta {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.offer-meta p {
+    margin-bottom: 10px;
+}
+
+.offer-description {
+    line-height: 1.6;
+}
+
+.offer-description h2 {
+    color: #007bb2;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.offer-actions {
+    margin-top: 40px;
+    display: flex;
+    gap: 15px;
+}
+
+.apply-button {
+    background: linear-gradient(135deg, #65D2CF, #4ECDC4);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 24px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(101, 210, 207, 0.3);
+}
+
+.apply-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(101, 210, 207, 0.4);
+}
+
+.back-button {
+    background-color: #f0f0f0;
+    color: #555;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 24px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+.back-button:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-3px);
+}
+
+/* Formulaire de candidature */
+.application-form {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    margin: 40px 0;
+}
+
+.application-form h2 {
+    color: #007bb2;
+    font-size: 22px;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #4ECDC4;
+    box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.2);
+    outline: none;
+}
+
+.form-actions {
+    margin-top: 30px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .offers-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .offer-actions {
+        flex-direction: column;
+    }
+    
+    .highlight {
+        font-size: 22px;
+        padding: 20px 15px;
+    }
+    
+    .highlight img {
+        height: 40px;
+    }
+}
+
+/* Animation d'apparition */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.offer-block {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.offers-container .offer-block:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.offers-container .offer-block:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.offers-container .offer-block:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.offers-container .offer-block:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+.offers-container .offer-block:nth-child(6) {
+    animation-delay: 0.5s;
+}

@@ -16,5 +16,8 @@ class EtudiantController
         echo $this->twig->render('Etudiant/index.twig');
     }
     
-    // Autres méthodes pour les étudiants
+    public function profil()
+    {
+        echo $this->twig->render('Etudiant/profil.twig');
+    }
 }
