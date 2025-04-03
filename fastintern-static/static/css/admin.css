@@ -3,7 +3,7 @@
 
 /* Styles spécifiques à l'administration */
 .admin-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 40px auto;
     padding: 0 20px;
 }
@@ -28,6 +28,21 @@
 
 .btn-create:hover {
     background-color: #4fa3a1;
+}
+
+.btn-logout {
+    margin-left: 20px;
+    padding: 8px 16px;
+    background-color: #dc3545;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.btn-logout:hover {
+    background-color: #c82333;
 }
 
 /* Tableau des offres */
@@ -155,4 +170,41 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+
+
+
+.search-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.search-form {
+    display: flex;
+    gap: 10px;
+}
+
+.search-form input[type="text"] {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 300px;
+}
+
+.btn-search {
+    padding: 8px 16px;
+    background-color: #65D2CF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.btn-search:hover {
+    background-color: #4fa3a1;
 }

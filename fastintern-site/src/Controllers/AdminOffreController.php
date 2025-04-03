@@ -18,13 +18,34 @@ class AdminOffreController
 
     public function index()
     {
-        $offres = $this->getAllOffres();
+        $search = $_GET['search'] ?? null;
+
+        if ($search) {
+            $offres = $this->searchOffresByEntreprise($search);
+        } else {
+            $offres = $this->getAllOffres();
+        }
+
         $entreprises = $this->getAllEntreprises();
 
         echo $this->twig->render('offre/offre_admin.twig', [
             'offres' => $offres,
-            'entreprises' => $entreprises
+            'entreprises' => $entreprises,
+            'search' => $search
         ]);
+    }
+
+    private function searchOffresByEntreprise($search)
+    {
+        $query = "SELECT o.*, e.nom_entreprise, s.statut as statut 
+                FROM OFFRE_STAGE o 
+                JOIN ENTREPRISE e ON o.id_entreprise = e.id_entreprise
+                JOIN STATUT_OFFRE s ON o.id_statut_offre = s.id_statut_offre
+                WHERE e.nom_entreprise LIKE :search
+                ORDER BY e.nom_entreprise ASC";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute(['search' => '%' . $search . '%']);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function save()
@@ -35,13 +56,45 @@ class AdminOffreController
         }
 
         $id_offre = $_POST['id_offre'] ?? null;
+        $nom_entreprise = $_POST['nom_entreprise'];
+        $email_contact = $_POST['email_contact'];
+        $telephone_contact = $_POST['telephone_contact'] ?? '';
+        $adresse = $_POST['adresse'] ?? '';
+
+        // Vérifiez si l'entreprise existe déjà
+        $query = "SELECT id_entreprise FROM ENTREPRISE WHERE nom_entreprise = :nom_entreprise";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute(['nom_entreprise' => $nom_entreprise]);
+        $entreprise = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$entreprise) {
+            // Si l'entreprise n'existe pas, insérez-la avec tous les champs requis
+            $query = "INSERT INTO ENTREPRISE (nom_entreprise, email_contact, telephone_contact, adresse, 
+                    description, date_creation, date_modification) 
+                    VALUES (:nom_entreprise, :email_contact, :telephone_contact, :adresse,
+                    :description, :date_creation, :date_modification)";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->execute([
+                'nom_entreprise' => $nom_entreprise,
+                'email_contact' => $email_contact,
+                'telephone_contact' => $telephone_contact,
+                'adresse' => $adresse,
+                'description' => 'Pas de description disponible',
+                'date_creation' => date('Y-m-d H:i:s'),
+                'date_modification' => date('Y-m-d H:i:s')
+            ]);
+            $id_entreprise = $this->pdo->lastInsertId();
+        } else {
+            $id_entreprise = $entreprise['id_entreprise'];
+        }
+
         $data = [
             'titre' => $_POST['titre'],
             'description' => $_POST['description'],
             'remuneration' => $_POST['remuneration'],
             'date_debut' => $_POST['date_debut'],
             'date_fin' => $_POST['date_fin'],
-            'id_entreprise' => $_POST['id_entreprise'],
+            'id_entreprise' => $id_entreprise,
             'date_modification' => date('Y-m-d H:i:s')
         ];
 
@@ -79,7 +132,7 @@ class AdminOffreController
                 FROM OFFRE_STAGE o 
                 JOIN ENTREPRISE e ON o.id_entreprise = e.id_entreprise
                 JOIN STATUT_OFFRE s ON o.id_statut_offre = s.id_statut_offre
-                ORDER BY o.date_publication DESC";
+                ORDER BY e.nom_entreprise ASC";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -125,6 +178,12 @@ class AdminOffreController
 
     private function deleteOffre($id)
     {
+        // Supprimer les candidatures associées à l'offre
+        $query = "DELETE FROM CANDIDATURE WHERE id_offre = :id_offre";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute(['id_offre' => $id]);
+
+        // Supprimer l'offre
         $query = "DELETE FROM OFFRE_STAGE WHERE id_offre = :id_offre";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute(['id_offre' => $id]);

@@ -1,40 +1,38 @@
-{# offre_admin.twig #}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>Gestion des Offres</title>
     <link rel="stylesheet" href="http://fastintern-static.local/static/css/admin.css">
-    <title>Gestion des offres - Administration</title>
 </head>
 <body>
     <header>
         <div class="logo">
-            <img src="http://fastintern-static.local/static/assets/logo.png" alt="FastIntern Logo">
+            <img src="http://fastintern-static.local/static/assets/logo.png" alt="Logo FastIntern">
             <span>FastIntern - Administration</span>
         </div>
         <nav>
-            <a href="/?uri=index">Accueil</a>
-            <a href="/?uri=admin/offres" class="active">Gestion des offres</a>
+            <a href="/?uri=admin">Accueil</a>
+            <a href="/?uri=admin/offres" class="active">Gestiond es utilisateurs</a>
+            <a href="/?uri=logout" class="btn-logout">Déconnexion</a>
         </nav>
     </header>
 
     <main class="admin-container">
-        <!-- Bouton pour créer une nouvelle offre -->
         <div class="actions-header">
-            <h1>Gestion des offres de stage</h1>
+            <h1>Gestion des Offres</h1>
             <button class="btn-create" onclick="toggleForm()">Créer une nouvelle offre</button>
         </div>
 
-        <!-- Formulaire de création/modification (caché par défaut) -->
+        <!-- Formulaire de création/modification -->
         <div id="offreForm" class="form-container" style="display: none;">
             <h2 id="formTitle">Créer une nouvelle offre</h2>
             <form action="/?uri=admin/offres/save" method="POST">
                 <input type="hidden" name="id_offre" id="id_offre">
-                
+
                 <div class="form-group">
-                    <label for="titre">Titre de l'offre *</label>
+                    <label for="titre">Titre *</label>
                     <input type="text" id="titre" name="titre" required>
                 </div>
 
@@ -60,12 +58,23 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="id_entreprise">Entreprise *</label>
-                    <select id="id_entreprise" name="id_entreprise" required>
-                        {% for entreprise in entreprises %}
-                            <option value="{{ entreprise.id_entreprise }}">{{ entreprise.nom_entreprise }}</option>
-                        {% endfor %}
-                    </select>
+                    <label for="nom_entreprise">Nom de l'entreprise *</label>
+                    <input type="text" id="nom_entreprise" name="nom_entreprise" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email_contact">Email de contact *</label>
+                    <input type="email" id="email_contact" name="email_contact" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telephone_contact">Téléphone de contact</label>
+                    <input type="tel" id="telephone_contact" name="telephone_contact">
+                </div>
+
+                <div class="form-group">
+                    <label for="adresse">Adresse de l'entreprise *</label>
+                    <input type="text" id="adresse" name="adresse" required>
                 </div>
 
                 <div class="form-actions">
@@ -75,7 +84,15 @@
             </form>
         </div>
 
-        <!-- Tableau des offres existantes -->
+        <div class="search-container">
+            <form action="/?uri=admin/offres" method="GET" class="search-form">
+                <input type="hidden" name="uri" value="admin/offres">
+                <input type="text" name="search" placeholder="Rechercher par nom d'entreprise" value="{{ search|default('') }}">
+                <button type="submit" class="btn-search">Rechercher</button>
+            </form>
+        </div>
+
+        <!-- Tableau des offres -->
         <div class="table-container">
             <table class="offres-table">
                 <thead>
@@ -99,7 +116,7 @@
                         <td>{{ offre.remuneration ? offre.remuneration ~ ' €' : 'Non précisée' }}</td>
                         <td>{{ offre.statut }}</td>
                         <td class="actions">
-                            <button onclick="editOffre({{ offre.id_offre }})" class="btn-edit">Modifier</button>
+                            <button onclick="editOffre({{ offre.id_offre }}, '{{ offre.titre }}', '{{ offre.description }}', {{ offre.remuneration }}, '{{ offre.date_debut }}', '{{ offre.date_fin }}', '{{ offre.nom_entreprise }}')" class="btn-edit">Modifier</button>
                             <button onclick="deleteOffre({{ offre.id_offre }})" class="btn-delete">Supprimer</button>
                         </td>
                     </tr>
@@ -109,24 +126,7 @@
         </div>
     </main>
 
-    <script>
-        function toggleForm() {
-            const form = document.getElementById('offreForm');
-            form.style.display = form.style.display === 'none' ? 'block' : 'none';
-        }
+    <script src="http://fastintern-static.local/static/js/Admin/offre.js"></script>
 
-        function editOffre(id) {
-            // À implémenter : Charger les données de l'offre dans le formulaire
-            document.getElementById('formTitle').textContent = 'Modifier l'offre';
-            document.getElementById('id_offre').value = id;
-            toggleForm();
-        }
-
-        function deleteOffre(id) {
-            if (confirm('Êtes-vous sûr de vouloir supprimer cette offre ?')) {
-                window.location.href = `/?uri=admin/offres/delete&id=${id}`;
-            }
-        }
-    </script>
 </body>
 </html>

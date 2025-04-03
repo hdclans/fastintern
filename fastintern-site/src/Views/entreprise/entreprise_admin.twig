@@ -1,0 +1,121 @@
+{# entreprise_admin.twig #}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Entreprises</title>
+    <link rel="stylesheet" href="http://fastintern-static.local/static/css/admin.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="http://fastintern-static.local/static/assets/logo.png" alt="Logo FastIntern">
+            <span>FastIntern - Administration</span>
+        </div>
+        <nav>
+            <a href="/?uri=admin">Accueil</a>
+            <a href="/?uri=admin/entreprises" class="active">Gestion des Entreprises</a>
+        </nav>
+    </header>
+
+    <main class="admin-container">
+        <div class="actions-header">
+            <h1>Gestion des Entreprises</h1>
+            <button class="btn-create" onclick="toggleForm()">Créer une nouvelle entreprise</button>
+        </div>
+
+        <!-- Formulaire de création/modification -->
+        <div id="entrepriseForm" class="form-container" style="display: none;">
+            <h2 id="formTitle">Créer une nouvelle entreprise</h2>
+            <form action="/?uri=admin/entreprises/save" method="POST">
+                <input type="hidden" name="id_entreprise" id="id_entreprise">
+
+                <div class="form-group">
+                    <label for="nom_entreprise">Nom de l'entreprise *</label>
+                    <input type="text" id="nom_entreprise" name="nom_entreprise" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" rows="4" class="form-control"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="email_contact">Email de contact *</label>
+                    <input type="email" id="email_contact" name="email_contact" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telephone_contact">Téléphone de contact</label>
+                    <input type="tel" id="telephone_contact" name="telephone_contact">
+                </div>
+
+                <div class="form-group">
+                    <label for="adresse">Adresse</label>
+                    <textarea id="adresse" name="adresse" rows="3" class="form-control"></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit">Enregistrer</button>
+                    <button type="button" class="btn-cancel" onclick="toggleForm()">Annuler</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Recherche -->
+        <div class="search-container">
+            <form action="/?uri=admin/entreprises" method="GET" class="search-form">
+                <input type="hidden" name="uri" value="admin/entreprises">
+                <input type="text" name="search" placeholder="Rechercher par nom d'entreprise" value="{{ search|default('') }}">
+                <button type="submit" class="btn-search">Rechercher</button>
+            </form>
+        </div>
+
+        <!-- Tableau des entreprises -->
+        <div class="table-container">
+            <table class="offres-table">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Email</th>
+                        <th>Téléphone</th>
+                        <th>Adresse</th>
+                        <th>Date création</th>
+                        <th>Dernière modification</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entreprise in entreprises %}
+                    <tr>
+                        <td>{{ entreprise.nom_entreprise }}</td>
+                        <td>{{ entreprise.description|slice(0, 100) }}{% if entreprise.description|length > 100 %}...{% endif %}</td>
+                        <td>{{ entreprise.email_contact }}</td>
+                        <td>{{ entreprise.telephone_contact }}</td>
+                        <td>{{ entreprise.adresse }}</td>
+                        <td>{{ entreprise.date_creation|date('d/m/Y H:i') }}</td>
+                        <td>{{ entreprise.date_modification ? entreprise.date_modification|date('d/m/Y H:i') : '-' }}</td>
+                        <td class="actions">
+                            <button onclick="editEntreprise(
+                                {{ entreprise.id_entreprise }},
+                                '{{ entreprise.nom_entreprise|e('js') }}',
+                                '{{ entreprise.description|e('js') }}',
+                                '{{ entreprise.email_contact|e('js') }}',
+                                '{{ entreprise.telephone_contact|e('js') }}',
+                                '{{ entreprise.adresse|e('js') }}'
+                            )" class="btn-edit">Modifier</button>
+                            <button onclick="deleteEntreprise({{ entreprise.id_entreprise }})" class="btn-delete">Supprimer</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="http://fastintern-static.local/static/JS/Admin/entreprise.js"></script>
+</body>
+</html>
