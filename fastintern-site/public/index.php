@@ -20,6 +20,7 @@ use App\Controllers\Invite\HomeController;
 use App\Controllers\Auth\ConnexionController;
 use App\Controllers\Admin\AdminController;
 use App\Controllers\Admin\AdminOffreController;
+use App\Controllers\Admin\AdminEntrepriseController;
 use App\Controllers\Pilote\PiloteController;
 use App\Controllers\Etudiant\EtudiantOffreController;
 use App\Controllers\Etudiant\EtudiantController;
@@ -59,9 +60,10 @@ if (!isset($_SESSION['user_id']) && !in_array($uri, $public_routes)) {
 
 // Définir les routes autorisées par rôle
 $role_routes = [
-    1 => ['admin', 'admin_profil', 'logout','admin_offres','admin_offres_save','admin_offres_delete'], // Admin
+    1 => ['admin', 'admin_profil', 'logout', 'admin_offres', 'admin_offres_save', 'admin_offres_delete', 
+           'admin_entreprises', 'admin_entreprises_save', 'admin_entreprises_delete'], // Admin
     2 => ['pilote', 'pilote_profil', 'logout'], // Pilote
-    3 => ['etudiant', 'etudiant_profil', 'logout','offres','detail'], // Étudiant
+    3 => ['etudiant', 'etudiant_profil', 'logout', 'offres', 'detail'], // Étudiant
 ];
 
 // Si l'utilisateur est connecté, vérifier s'il a accès à la route demandée
@@ -140,6 +142,21 @@ switch ($uri) {
         $controller->delete();
         break;
         
+    case 'admin_entreprises':
+        $controller = new \App\Controllers\Admin\AdminEntrepriseController($twig, $pdo);
+        $controller->index();
+        break;
+    
+    case 'admin_entreprises_save':
+        $controller = new \App\Controllers\Admin\AdminEntrepriseController($twig, $pdo);
+        $controller->save();
+        break;
+    
+    case 'admin_entreprises_delete':
+        $controller = new \App\Controllers\Admin\AdminEntrepriseController($twig, $pdo);
+        $controller->delete();
+        break;
+
     // Routes du pilote
     case 'pilote':
         $controller = new PiloteController($twig);

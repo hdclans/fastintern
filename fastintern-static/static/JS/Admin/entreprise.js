@@ -19,6 +19,6 @@ function editEntreprise(id, nom, description, email, telephone, adresse) {
 // Fonction pour confirmer la suppression d'une entreprise
 function deleteEntreprise(id) {
     if (confirm('Êtes-vous sûr de vouloir supprimer cette entreprise ?')) {
-        window.location.href = `/?uri=admin/entreprises/delete&id=${id}`;
+        window.location.href = `/?uri=admin_entreprises_delete&id=${id}`;
     }
 }

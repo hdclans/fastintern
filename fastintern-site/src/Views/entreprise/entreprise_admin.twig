@@ -16,7 +16,7 @@
         </div>
         <nav>
             <a href="/?uri=admin">Accueil</a>
-            <a href="/?uri=admin/entreprises" class="active">Gestion des Entreprises</a>
+            <a href="/?uri=admin_entreprises" class="active">Gestion des Entreprises</a>
         </nav>
     </header>
 
@@ -29,7 +29,7 @@
         <!-- Formulaire de création/modification -->
         <div id="entrepriseForm" class="form-container" style="display: none;">
             <h2 id="formTitle">Créer une nouvelle entreprise</h2>
-            <form action="/?uri=admin/entreprises/save" method="POST">
+            <form action="/?uri=admin_entreprises_save" method="POST">
                 <input type="hidden" name="id_entreprise" id="id_entreprise">
 
                 <div class="form-group">
@@ -66,8 +66,8 @@
 
         <!-- Recherche -->
         <div class="search-container">
-            <form action="/?uri=admin/entreprises" method="GET" class="search-form">
-                <input type="hidden" name="uri" value="admin/entreprises">
+            <form action="/?uri=admin_entreprises" method="GET" class="search-form">
+                <input type="hidden" name="uri" value="admin_entreprises">
                 <input type="text" name="search" placeholder="Rechercher par nom d'entreprise" value="{{ search|default('') }}">
                 <button type="submit" class="btn-search">Rechercher</button>
             </form>
