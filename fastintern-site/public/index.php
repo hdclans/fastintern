@@ -66,7 +66,8 @@ switch ($uri) {
         $controller->detail(); // Appel de la méthode pour afficher les détails
         break;
 
-
+        
+    // Routes pour la gestion des offres
     case 'admin/offres':
         $controller = new \App\Controllers\AdminOffreController($twig, $pdo);
         $controller->index();
@@ -89,6 +90,22 @@ switch ($uri) {
         break;
     case 'admin/entreprises/delete':
         $controller = new \App\Controllers\Admin\AdminEntrepriseController($twig, $pdo);
+        $controller->delete();
+        break;
+
+
+
+    // Routes pour la gestion des utilisateurs
+    case 'admin/etudiants':
+        $controller = new \App\Controllers\AdminEtudiantController($twig, $pdo);
+        $controller->index();
+        break;
+    case 'admin/etudiants/save':
+        $controller = new \App\Controllers\AdminEtudiantController($twig, $pdo);
+        $controller->save();
+        break;
+    case 'admin/etudiants/delete':
+        $controller = new \App\Controllers\AdminEtudiantController($twig, $pdo);
         $controller->delete();
         break;
 
@@ -119,6 +136,10 @@ switch ($uri) {
         break;
 
 
+
+
+
+    // Routes pour les mentions légales
     case 'cgu':
         $controller = new CGUController($twig);
         $controller->cgu();
@@ -199,7 +220,7 @@ switch ($uri) {
         break;
 
 
-
+    // Routes pour les offres
     default:
         $controller = new Erreur404Controller($twig);
         $controller->erreur404();

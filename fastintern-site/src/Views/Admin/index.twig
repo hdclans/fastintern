@@ -35,7 +35,7 @@
                 <div class="dropdown">
                     <button class="dropbtn">Gestion Utilisateurs</button>
                     <div class="dropdown-content">
-                        <a href="#" {% if app.request.get('_route') == 'gestion_etudiants' %}class="active"{% endif %}>Gérer Étudiants</a>
+                        <a href="/?uri=admin/etudiants" {% if app.request.get('_route') == 'gestion_etudiants' %}class="active"{% endif %}>Gérer Étudiants</a>
                         <a href="/?uri=admin/pilotes" {% if app.request.get('_route') == 'gestion_pilotes' %}class="active"{% endif %}>Gérer Pilotes</a>
                         <a href="/?uri=admin/admins" {% if app.request.get('_route') == 'gestion_administrateurs' %}class="active"{% endif %}>Gérer Administrateurs</a>
                     </div>
@@ -54,7 +54,7 @@
     <main>
         <section class="slogan">
             <img src="http://fastintern-static.local/static/assets/cloud.png" alt="cloud">
-            <h1>{{ slogan|default('Votre stage, en un éclair !') }}</h1>
+            <h1>{{ slogan|default('Bienvenue du côté administrateur !') }}</h1>
         </section>
         
         <div class="features">
