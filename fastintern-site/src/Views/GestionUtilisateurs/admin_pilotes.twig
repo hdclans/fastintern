@@ -30,6 +30,8 @@
             <h2 id="formTitle">Créer un nouveau pilote</h2>
             <form action="/?uri=admin/pilotes/save" method="POST">
                 <input type="hidden" name="id_utilisateur" id="id_utilisateur">
+                <!-- Champ caché pour définir automatiquement le rôle comme pilote -->
+                <input type="hidden" name="id_role" id="id_role" value="2">
 
                 <div class="form-group">
                     <label for="nom">Nom *</label>
@@ -49,15 +51,6 @@
                 <div class="form-group">
                     <label for="mot_de_passe">Mot de passe <span id="password-info">(laisser vide pour conserver l'actuel)</span></label>
                     <input type="password" id="mot_de_passe" name="mot_de_passe">
-                </div>
-
-                <div class="form-group">
-                    <label for="id_role">Rôle *</label>
-                    <select id="id_role" name="id_role" required>
-                        <option value="1">Administrateur</option>
-                        <option value="2" selected>Pilote</option>
-                        <option value="3">Étudiant</option>
-                    </select>
                 </div>
 
                 <div class="form-actions">
@@ -85,7 +78,6 @@
                         <th>Nom</th>
                         <th>Prénom</th>
                         <th>Email</th>
-                        <th>Rôle</th>
                         <th>Date d'inscription</th>
                         <th>Actions</th>
                     </tr>
@@ -97,16 +89,15 @@
                         <td>{{ utilisateur.nom }}</td>
                         <td>{{ utilisateur.prenom }}</td>
                         <td>{{ utilisateur.email }}</td>
-                        <td>{{ utilisateur.nom_role }}</td>
                         <td>{{ utilisateur.date_inscription|date('d/m/Y') }}</td>
                         <td class="actions">
-                            <button onclick="editPilote({{ utilisateur.id_utilisateur }}, '{{ utilisateur.nom }}', '{{ utilisateur.prenom }}', '{{ utilisateur.email }}', {{ utilisateur.id_role }})" class="btn-edit">Modifier</button>
+                            <button onclick="editPilote({{ utilisateur.id_utilisateur }}, '{{ utilisateur.nom }}', '{{ utilisateur.prenom }}', '{{ utilisateur.email }}')" class="btn-edit">Modifier</button>
                             <button onclick="confirmDelete({{ utilisateur.id_utilisateur }})" class="btn-delete">Supprimer</button>
                         </td>
                     </tr>
                     {% else %}
                     <tr>
-                        <td colspan="7" class="no-data">Aucun pilote trouvé</td>
+                        <td colspan="6" class="no-data">Aucun pilote trouvé</td>
                     </tr>
                     {% endfor %}
                 </tbody>

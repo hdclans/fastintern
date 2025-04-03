@@ -37,7 +37,8 @@ class AdminPiloteController
         $query = "SELECT u.*, r.nom_role 
                 FROM UTILISATEUR u
                 JOIN ROLE r ON u.id_role = r.id_role
-                WHERE u.nom LIKE :search OR u.prenom LIKE :search OR u.email LIKE :search
+                WHERE (u.nom LIKE :search OR u.prenom LIKE :search OR u.email LIKE :search)
+                AND u.id_role = 2
                 ORDER BY u.nom, u.prenom ASC";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute(['search' => '%' . $search . '%']);
@@ -89,6 +90,7 @@ class AdminPiloteController
         $query = "SELECT u.*, r.nom_role 
                 FROM UTILISATEUR u
                 JOIN ROLE r ON u.id_role = r.id_role
+                WHERE u.id_role = 2
                 ORDER BY u.nom, u.prenom ASC";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();

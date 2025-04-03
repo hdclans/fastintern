@@ -10,7 +10,7 @@ function toggleForm() {
         // Réinitialiser le formulaire
         document.querySelector('#piloteForm form').reset();
         document.getElementById('id_utilisateur').value = '';
-        document.getElementById('id_role').value = '2'; // Par défaut, pilote
+        document.getElementById('id_role').value = '2'; // Assure que le rôle est bien "pilote"
         
         // Le mot de passe est obligatoire pour un nouveau pilote
         document.getElementById('mot_de_passe').required = true;
@@ -20,13 +20,13 @@ function toggleForm() {
     }
 }
 
-function editPilote(id, nom, prenom, email, id_role) {
+function editPilote(id, nom, prenom, email) {
     // Remplir le formulaire avec les valeurs existantes
     document.getElementById('id_utilisateur').value = id;
     document.getElementById('nom').value = nom;
     document.getElementById('prenom').value = prenom;
     document.getElementById('email').value = email;
-    document.getElementById('id_role').value = id_role;
+    document.getElementById('id_role').value = '2'; // Assure que le rôle reste "pilote"
     
     // Le mot de passe n'est pas obligatoire lors de la modification
     document.getElementById('mot_de_passe').required = false;
@@ -42,8 +42,8 @@ function editPilote(id, nom, prenom, email, id_role) {
     document.getElementById('piloteForm').scrollIntoView({ behavior: 'smooth' });
 }
 
-function deletePilote(id) {
-    if (confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')) {
+function confirmDelete(id) {
+    if (confirm('Êtes-vous sûr de vouloir supprimer ce pilote ?')) {
         window.location.href = `/?uri=admin/pilotes/delete&id=${id}`;
     }
 }
