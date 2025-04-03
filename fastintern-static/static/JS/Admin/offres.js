@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fonction pour supprimer une offre avec confirmation
     window.deleteOffre = function(id) {
         if (confirm('Êtes-vous sûr de vouloir supprimer cette offre ?')) {
-            window.location.href = `/?uri=admin_offre_delete&id=${id}`;
+            window.location.href = `/?uri=admin_offres_delete&id=${id}`;
         }
     };
     
