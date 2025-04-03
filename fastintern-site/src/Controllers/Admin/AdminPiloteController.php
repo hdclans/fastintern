@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 
 use Twig\Environment;
 use PDO;
@@ -48,7 +48,7 @@ class AdminPiloteController
     public function save()
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header('Location: /?uri=admin/pilotes');
+            header('Location: /?uri=admin_pilotes');
             exit;
         }
 
@@ -67,21 +67,21 @@ class AdminPiloteController
             $this->createUtilisateur($nom, $prenom, $email, $mot_de_passe, $id_role);
         }
 
-        header('Location: /?uri=admin/pilotes');
+        header('Location: /?uri=admin_pilotes');
         exit;
     }
 
     public function delete()
     {
         if (!isset($_GET['id'])) {
-            header('Location: /?uri=admin/pilotes');
+            header('Location: /?uri=admin_pilotes');
             exit;
         }
 
         $id = (int)$_GET['id'];
         $this->deleteUtilisateur($id);
 
-        header('Location: /?uri=admin/pilotes');
+        header('Location: /?uri=admin_pilotes');
         exit;
     }
 

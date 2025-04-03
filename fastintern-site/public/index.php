@@ -20,6 +20,9 @@ use App\Controllers\Invite\HomeController;
 use App\Controllers\Auth\ConnexionController;
 use App\Controllers\Admin\AdminController;
 use App\Controllers\Admin\AdminOffreController;
+use App\Controllers\Admin\AdminEntrepriseController;
+use App\Controllers\Admin\AdminEtudiantController;
+use App\Controllers\Admin\AdminPiloteController;
 use App\Controllers\Pilote\PiloteController;
 use App\Controllers\Etudiant\EtudiantOffreController;
 use App\Controllers\Etudiant\EtudiantController;
@@ -59,9 +62,13 @@ if (!isset($_SESSION['user_id']) && !in_array($uri, $public_routes)) {
 
 // Définir les routes autorisées par rôle
 $role_routes = [
-    1 => ['admin', 'admin_profil', 'logout','admin_offres','admin_offres_save','admin_offres_delete'], // Admin
+    1 => ['admin', 'admin_profil', 'logout', 
+          'admin_offres', 'admin_offres_save', 'admin_offres_delete',
+          'admin_entreprises', 'admin_entreprises_save', 'admin_entreprises_delete',
+          'admin_etudiants', 'admin_etudiants_save', 'admin_etudiants_delete',
+          'admin_pilotes', 'admin_pilotes_save', 'admin_pilotes_delete'], // Admin
     2 => ['pilote', 'pilote_profil', 'logout'], // Pilote
-    3 => ['etudiant', 'etudiant_profil', 'logout','offres','detail'], // Étudiant
+    3 => ['etudiant', 'etudiant_profil', 'logout', 'offres', 'detail', 'entreprise'], // Ajoutez 'entreprise'
 ];
 
 // Si l'utilisateur est connecté, vérifier s'il a accès à la route demandée
@@ -115,6 +122,9 @@ switch ($uri) {
         $controller->forgotPassword();
         break;
 
+
+
+
     // Routes de l'admin
     case 'admin':
         $controller = new AdminController($twig);
@@ -140,6 +150,51 @@ switch ($uri) {
         $controller->delete();
         break;
         
+    case 'admin_entreprises':
+        $controller = new \App\Controllers\Admin\AdminEntrepriseController($twig, $pdo);
+        $controller->index();
+        break;
+    
+    case 'admin_entreprises_save':
+        $controller = new \App\Controllers\Admin\AdminEntrepriseController($twig, $pdo);
+        $controller->save();
+        break;
+    
+    case 'admin_entreprises_delete':
+        $controller = new \App\Controllers\Admin\AdminEntrepriseController($twig, $pdo);
+        $controller->delete();
+        break;
+    
+    case 'admin_etudiants':
+        $controller = new AdminEtudiantController($twig, $pdo);
+        $controller->index();
+        break;
+        
+    case 'admin_etudiants_save':
+        $controller = new AdminEtudiantController($twig, $pdo);
+        $controller->save();
+        break;
+    
+    case 'admin_etudiants_delete':
+        $controller = new AdminEtudiantController($twig, $pdo);
+        $controller->delete();
+        break;
+    
+    case 'admin_pilotes':
+        $controller = new AdminPiloteController($twig, $pdo);
+        $controller->index();
+        break;
+    
+    case 'admin_pilotes_save':
+        $controller = new AdminPiloteController($twig, $pdo);
+        $controller->save();
+        break;
+    
+    case 'admin_pilotes_delete':
+        $controller = new AdminPiloteController($twig, $pdo);
+        $controller->delete();
+        break;
+
     // Routes du pilote
     case 'pilote':
         $controller = new PiloteController($twig);
@@ -173,6 +228,13 @@ switch ($uri) {
         $controller = new EtudiantOffreController($twig, $offreModel); // Instanciation du contrôleur
         $controller->detail(); // Appel de la méthode pour afficher les détails
         break;   
+
+    case 'entreprise':
+        $entrepriseModel = new \App\Models\EntrepriseModel($pdo);
+        $controller = new EntrepriseController($twig, $entrepriseModel);
+        $controller->index();
+        break;
+
 
     default:
         $controller = new Erreur404Controller($twig);

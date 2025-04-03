@@ -6,18 +6,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des Entreprises</title>
-    <link rel="stylesheet" href="http://fastintern-static.local/static/css/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="http://fastintern-static.local/static/css/Admin/offres.css">
+    <link rel="stylesheet" href="http://fastintern-static.local/static/css/layout/header.css">
+    <link rel="stylesheet" href="http://fastintern-static.local/static/css/layout/footer.css">
 </head>
 <body>
     <header>
         <div class="logo">
             <img src="http://fastintern-static.local/static/assets/logo.png" alt="Logo FastIntern">
-            <span>FastIntern - Administration</span>
+            <span class="titre-logo">FastIntern</span>
         </div>
-        <nav>
-            <a href="/?uri=admin">Accueil</a>
-            <a href="/?uri=admin/entreprises" class="active">Gestion des Entreprises</a>
-        </nav>
+        <div class="nav-container">
+            {% if session.user_id is defined %}
+                {% if session.role_id == 1 %}
+                    <nav>
+                <a class="btn-accueil" href="?uri=admin">Accueil</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Gestion Offres</button>
+                    <div class="dropdown-content">
+                        <a href="?uri=admin_offres">Gérer les offres</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Gestion Entreprises</button>
+                    <div class="dropdown-content">
+                        <a href="/?uri=admin_entreprises">Gérer les entreprises</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Gestion Utilisateurs</button>
+                    <div class="dropdown-content">
+                        <a href="?uri=admin_etudiants">Gérer les étudiants</a>
+                        <a href="?uri=admin_pilotes">Gérer les pilotes</a>
+                    </div>
+                </div>
+            </nav>
+            
+            <div class="profile-container">
+                <a class="btn-profile" href="?uri=admin_profil">
+                    <i class="fas fa-user-circle"></i>
+                    Mon Profil
+                </a>
+            </div>
+                {% endif %}
+            {% endif %}
+        </div>
     </header>
 
     <main class="admin-container">
@@ -29,7 +64,7 @@
         <!-- Formulaire de création/modification -->
         <div id="entrepriseForm" class="form-container" style="display: none;">
             <h2 id="formTitle">Créer une nouvelle entreprise</h2>
-            <form action="/?uri=admin/entreprises/save" method="POST">
+            <form action="/?uri=admin_entreprises_save" method="POST">
                 <input type="hidden" name="id_entreprise" id="id_entreprise">
 
                 <div class="form-group">
@@ -66,8 +101,8 @@
 
         <!-- Recherche -->
         <div class="search-container">
-            <form action="/?uri=admin/entreprises" method="GET" class="search-form">
-                <input type="hidden" name="uri" value="admin/entreprises">
+            <form action="/?uri=admin_entreprises" method="GET" class="search-form">
+                <input type="hidden" name="uri" value="admin_entreprises">
                 <input type="text" name="search" placeholder="Rechercher par nom d'entreprise" value="{{ search|default('') }}">
                 <button type="submit" class="btn-search">Rechercher</button>
             </form>

@@ -1,5 +1,3 @@
-/* STYLES DES OFFRES - Inspiré par header.css et footer.css */
-
 /* Styles généraux */
 * {
     margin: 0;
@@ -15,7 +13,7 @@ body {
 
 /* Container principal */
 .admin-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 40px auto;
     padding: 0 20px;
 }

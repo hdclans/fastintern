@@ -35,7 +35,7 @@ class AdminEntrepriseController
     public function save()
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header('Location: /?uri=admin/entreprises');
+            header('Location: /?uri=admin_entreprises');
             exit;
         }
 
@@ -58,21 +58,21 @@ class AdminEntrepriseController
             $this->createEntreprise($data);
         }
 
-        header('Location: /?uri=admin/entreprises');
+        header('Location: /?uri=admin_entreprises');
         exit;
     }
 
     public function delete()
     {
         if (!isset($_GET['id'])) {
-            header('Location: /?uri=admin/entreprises');
+            header('Location: /?uri=admin_entreprises');
             exit;
         }
 
         $id = (int)$_GET['id'];
         $this->deleteEntreprise($id);
 
-        header('Location: /?uri=admin/entreprises');
+        header('Location: /?uri=admin_entreprises');
         exit;
     }
 
