@@ -20,13 +20,13 @@
             {% if session.user_id is defined %}
                 {% if session.role_id == 3 %}
                     <nav>
-                <a class="btn-accueil" href="?uri=etudiant">Accueil</a>
-                <a class="btn-accueil" href="?uri=offres">Voir Offres</a>
-                <a class="btn-accueil" href="#">Voir Entreprises</a>
+                <a class="btn-accueil" href="/?uri=etudiant">Accueil</a>
+                <a class="btn-accueil" href="/?uri=offres">Voir Offres</a>
+                <a class="btn-accueil" href="/?uri=entreprise">Voir Entreprises</a>
             </nav>
             
             <div class="profile-container">
-                <a class="btn-profile" href="?uri=etudiant_profil">
+                <a class="btn-profile" href="/?uri=etudiant_profil">
                     <i class="fas fa-user-circle"></i>
                     Mon Profil
                 </a>

@@ -68,7 +68,7 @@ $role_routes = [
           'admin_etudiants', 'admin_etudiants_save', 'admin_etudiants_delete',
           'admin_pilotes', 'admin_pilotes_save', 'admin_pilotes_delete'], // Admin
     2 => ['pilote', 'pilote_profil', 'logout'], // Pilote
-    3 => ['etudiant', 'etudiant_profil', 'logout', 'offres', 'detail'], // Étudiant
+    3 => ['etudiant', 'etudiant_profil', 'logout', 'offres', 'detail', 'entreprise'], // Ajoutez 'entreprise'
 ];
 
 // Si l'utilisateur est connecté, vérifier s'il a accès à la route demandée
@@ -121,6 +121,9 @@ switch ($uri) {
         $controller = new ConnexionController($twig);
         $controller->forgotPassword();
         break;
+
+
+
 
     // Routes de l'admin
     case 'admin':
@@ -225,6 +228,13 @@ switch ($uri) {
         $controller = new EtudiantOffreController($twig, $offreModel); // Instanciation du contrôleur
         $controller->detail(); // Appel de la méthode pour afficher les détails
         break;   
+
+    case 'entreprise':
+        $entrepriseModel = new \App\Models\EntrepriseModel($pdo);
+        $controller = new EntrepriseController($twig, $entrepriseModel);
+        $controller->index();
+        break;
+
 
     default:
         $controller = new Erreur404Controller($twig);

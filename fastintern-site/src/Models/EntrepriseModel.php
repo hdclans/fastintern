@@ -28,7 +28,7 @@ class EntrepriseModel {
      * @param int $offset Nombre d'entreprises à ignorer (pour la pagination)
      * @return array Liste des entreprises
      */
-    public function getEntreprises($limit = 4, $offset = 0) {
+    public function getEntreprises($limit = 6, $offset = 0) {
         $sql = "
             SELECT  
                 description, 
