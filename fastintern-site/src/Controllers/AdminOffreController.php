@@ -57,6 +57,9 @@ class AdminOffreController
 
         $id_offre = $_POST['id_offre'] ?? null;
         $nom_entreprise = $_POST['nom_entreprise'];
+        $email_contact = $_POST['email_contact'];
+        $telephone_contact = $_POST['telephone_contact'] ?? '';
+        $adresse = $_POST['adresse'] ?? '';
 
         // Vérifiez si l'entreprise existe déjà
         $query = "SELECT id_entreprise FROM ENTREPRISE WHERE nom_entreprise = :nom_entreprise";
@@ -65,10 +68,21 @@ class AdminOffreController
         $entreprise = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if (!$entreprise) {
-            // Si l'entreprise n'existe pas, insérez-la
-            $query = "INSERT INTO ENTREPRISE (nom_entreprise) VALUES (:nom_entreprise)";
+            // Si l'entreprise n'existe pas, insérez-la avec tous les champs requis
+            $query = "INSERT INTO ENTREPRISE (nom_entreprise, email_contact, telephone_contact, adresse, 
+                    description, date_creation, date_modification) 
+                    VALUES (:nom_entreprise, :email_contact, :telephone_contact, :adresse,
+                    :description, :date_creation, :date_modification)";
             $stmt = $this->pdo->prepare($query);
-            $stmt->execute(['nom_entreprise' => $nom_entreprise]);
+            $stmt->execute([
+                'nom_entreprise' => $nom_entreprise,
+                'email_contact' => $email_contact,
+                'telephone_contact' => $telephone_contact,
+                'adresse' => $adresse,
+                'description' => 'Pas de description disponible',
+                'date_creation' => date('Y-m-d H:i:s'),
+                'date_modification' => date('Y-m-d H:i:s')
+            ]);
             $id_entreprise = $this->pdo->lastInsertId();
         } else {
             $id_entreprise = $entreprise['id_entreprise'];
@@ -92,19 +106,6 @@ class AdminOffreController
             $data['date_publication'] = date('Y-m-d H:i:s');
             $data['id_statut_offre'] = 1;
             $this->createOffre($data);
-        }
-
-        if (!$entreprise) {
-            // Si l'entreprise n'existe pas, insérez-la avec l'email de contact
-            $query = "INSERT INTO ENTREPRISE (nom_entreprise, email_contact) VALUES (:nom_entreprise, :email_contact)";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->execute([
-                'nom_entreprise' => $nom_entreprise,
-                'email_contact' => $_POST['email_contact']
-            ]);
-            $id_entreprise = $this->pdo->lastInsertId();
-        } else {
-            $id_entreprise = $entreprise['id_entreprise'];
         }
 
         header('Location: /?uri=admin/offres');
