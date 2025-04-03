@@ -28,7 +28,7 @@
                 <div class="dropdown">
                     <button class="dropbtn">Gestion Entreprises</button>
                     <div class="dropdown-content">
-                        <a href="#" {% if app.request.get('_route') == 'gerer_entreprises' %}class="active"{% endif %}>Gérer Entreprises</a>
+                        <a href="/?uri=admin/entreprises" {% if app.request.get('_route') == 'gerer_entreprises' %}class="active"{% endif %}>Gérer Entreprises</a>
                         <a href="#" {% if app.request.get('_route') == 'voir_entreprises' %}class="active"{% endif %}>Voir Entreprises</a>
                     </div>
                 </div>
