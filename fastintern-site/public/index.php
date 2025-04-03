@@ -104,6 +104,19 @@ switch ($uri) {
         $controller = new \App\Controllers\AdminPiloteController($twig, $pdo);
         $controller->delete();
         break;
+    
+    case 'admin/admins':
+        $controller = new \App\Controllers\AdminAdminController($twig, $pdo);
+        $controller->index();
+        break;
+    case 'admin/admins/save':
+        $controller = new \App\Controllers\AdminAdminController($twig, $pdo);
+        $controller->save();
+        break;
+    case 'admin/admins/delete':
+        $controller = new \App\Controllers\AdminAdminController($twig, $pdo);
+        $controller->delete();
+        break;
 
 
     case 'cgu':

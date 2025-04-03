@@ -22,21 +22,22 @@
                     <button class="dropbtn">Gestion Offres</button>
                     <div class="dropdown-content">
                         <a href="/?uri=admin/offres" {% if app.request.get('_route') == 'gerer_offres' %}class="active"{% endif %}>Gérer Offres</a>
-                        <a href="#" {% if app.request.get('_route') == 'voir_offres' %}class="active"{% endif %}>Voir Offres</a>
+                        <a href="/?uri=admin/offres" {% if app.request.get('_route') == 'voir_offres' %}class="active"{% endif %}>Voir Offres</a>
                     </div>
                 </div>
                 <div class="dropdown">
                     <button class="dropbtn">Gestion Entreprises</button>
                     <div class="dropdown-content">
                         <a href="/?uri=admin/entreprises" {% if app.request.get('_route') == 'gerer_entreprises' %}class="active"{% endif %}>Gérer Entreprises</a>
-                        <a href="#" {% if app.request.get('_route') == 'voir_entreprises' %}class="active"{% endif %}>Voir Entreprises</a>
+                        <a href="/?uri=admin/entreprises" {% if app.request.get('_route') == 'voir_entreprises' %}class="active"{% endif %}>Voir Entreprises</a>
                     </div>
                 </div>
                 <div class="dropdown">
                     <button class="dropbtn">Gestion Utilisateurs</button>
                     <div class="dropdown-content">
                         <a href="#" {% if app.request.get('_route') == 'gestion_etudiants' %}class="active"{% endif %}>Gérer Étudiants</a>
-                        <a href="#" {% if app.request.get('_route') == 'gestion_pilotes' %}class="active"{% endif %}>Gérer Pilotes</a>
+                        <a href="/?uri=admin/pilotes" {% if app.request.get('_route') == 'gestion_pilotes' %}class="active"{% endif %}>Gérer Pilotes</a>
+                        <a href="/?uri=admin/admins" {% if app.request.get('_route') == 'gestion_administrateurs' %}class="active"{% endif %}>Gérer Administrateurs</a>
                     </div>
                 </div>
             </nav>
