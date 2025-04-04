@@ -6,47 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="http://fastintern-static.local/static/css/entreprise.css">
+    <link rel="stylesheet" href="http://fastintern-static.local/static/css/layout/header.css">
+    <link rel="stylesheet" href="http://fastintern-static.local/static/css/layout/footer.css">
 </head>
 <body>
     <header>
-    <!-- Logo et Navigation à gauche -->
-    <div class="logo">
-        <img src="http://fastintern-static.local/static/assets/logo.png" alt="Logo FastIntern">
-        <span class="titre-logo">{{ site_name|default('FastIntern') }}</span>
-    </div>
-
-    <nav>
-        <ul>
-            <li>
+        <div class="logo">
+            <img src="http://fastintern-static.local/static/assets/logo.png" alt="Logo FastIntern">
+            <span class="titre-logo">FastIntern</span>
+        </div>
+        <div class="nav-container">
+            {% if session.user_id is defined %}
                 {% if session.role_id == 3 %}
-                    <a href="/?uri=etudiant">Accueil</a>
-                    <a href="/?uri=offres">Offres de stage</a>
-                    <a href="/?uri=entreprise" class="active">Entreprises</a>
-                {% elseif session.role_id is not defined %}
-                    <a href="/">Accueil</a>
-                    <a href="/?uri=offres">Offres de stage</a>
-                    <a href="/?uri=entreprise" class="active">Entreprises</a>
+                    <nav>
+                <a class="btn-accueil" href="/?uri=etudiant">Accueil</a>
+                <a class="btn-accueil" href="/?uri=offres">Voir Offres</a>
+                <a class="btn-accueil" href="/?uri=entreprise">Voir Entreprises</a>
+            </nav>
+            
+            <div class="profile-container">
+                <a class="btn-profile" href="/?uri=etudiant_profil">
+                    <i class="fas fa-user-circle"></i>
+                    Mon Profil
+                </a>
+            </div>
                 {% endif %}
-            </li>
-        </ul>
-    </nav>
-
-    <!-- Bouton Connexion seul à droite -->
-    <div class="nav-connexion">
-        {% if session.user_id is defined %}
-            {% if session.role_id == 3 %}
-                <a href="/?uri=etudiant_profil">Mon Profil</a>
-            {% elseif session.role_id == 2 %}
-                <a href="/?uri=pilote_profil">Mon Profil</a>
-            {% elseif session.role_id == 1 %}
-                <a href="/?uri=admin_profil">Mon Profil</a>
             {% endif %}
-        {% else %}
-            <a href="/?uri=connexion">Connexion</a>
-        {% endif %}
-    </div>
-</header>
-
+        </div>
+    </header>
     <main>
         <section class="slogan">
             <img src="http://fastintern-static.local/static/assets/cloud.png" alt="cloud">

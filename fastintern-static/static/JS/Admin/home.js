@@ -111,18 +111,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // PARALLAXE
-    const slogan = document.querySelector('.slogan');
-    if (slogan) {
-        window.addEventListener('scroll', function() {
-            const scrollPosition = window.scrollY;
-            const sloganPosition = slogan.offsetTop;
-            const offset = scrollPosition - sloganPosition;
-            
-            if (offset > -500 && offset < 300) {
-                const translateY = offset * 0.2;
-                slogan.querySelector('img').style.transform = `translateY(${translateY}px)`;
-            }
-        });
-    }
+    
 });

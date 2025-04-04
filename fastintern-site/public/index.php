@@ -73,9 +73,8 @@ $role_routes = [
     2 => ['pilote', 'pilote_profil', 'logout', 
           'pilote_offres', 'pilote_offres_save', 'pilote_offres_delete',
           'pilote_entreprises', 'pilote_entreprises_save', 'pilote_entreprises_delete',
-          'pilote_etudiants', 'pilote_etudiants_save', 'pilote_etudiants_delete',
-          'pilote_pilotes', 'pilote_pilotes_save', 'pilote_pilotes_delete'], // Pilote
-    3 => ['etudiant', 'etudiant_profil', 'logout', 'offres', 'detail', 'entreprise'], // Ajoutez 'entreprise'
+          'pilote_etudiants', 'pilote_etudiants_save', 'pilote_etudiants_delete',], // Pilote
+    3 => ['etudiant', 'etudiant_profil', 'logout', 'offres', 'detail', 'entreprise'],
 ];
 
 // Si l'utilisateur est connecté, vérifier s'il a accès à la route demandée
@@ -158,17 +157,17 @@ switch ($uri) {
         break;
         
     case 'admin_entreprises':
-        $controller = new \App\Controllers\Admin\AdminEntrepriseController($twig, $pdo);
+        $controller = new AdminEntrepriseController($twig, $pdo);
         $controller->index();
         break;
     
     case 'admin_entreprises_save':
-        $controller = new \App\Controllers\Admin\AdminEntrepriseController($twig, $pdo);
+        $controller = new AdminEntrepriseController($twig, $pdo);
         $controller->save();
         break;
     
     case 'admin_entreprises_delete':
-        $controller = new \App\Controllers\Admin\AdminEntrepriseController($twig, $pdo);
+        $controller = new AdminEntrepriseController($twig, $pdo);
         $controller->delete();
         break;
     
@@ -201,6 +200,10 @@ switch ($uri) {
         $controller = new AdminPiloteController($twig, $pdo);
         $controller->delete();
         break;
+
+
+
+
 
     // Routes du pilote
     case 'pilote':
@@ -271,6 +274,11 @@ switch ($uri) {
         $controller = new PilotePiloteController($twig, $pdo);
         $controller->delete();
         break;    
+        
+
+
+
+
         
     // Routes de l'étudiant
     case 'etudiant':
