@@ -32,6 +32,10 @@ use App\Controllers\Etudiant\EtudiantController;
 
 use App\Models\OffreModel;
 
+use App\Controllers\MentionsLegales\CGUController;
+use App\Controllers\MentionsLegales\PolitiqueConfidentialiteController;
+use App\Controllers\MentionsLegales\InfosLegalesController;
+
 // Configuration de Twig
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../src/Views');
 $twig = new \Twig\Environment($loader, [
@@ -127,7 +131,6 @@ switch ($uri) {
         $controller = new ConnexionController($twig);
         $controller->forgotPassword();
         break;
-
 
 
 
@@ -279,7 +282,7 @@ switch ($uri) {
 
 
 
-        
+
     // Routes de l'étudiant
     case 'etudiant':
         $controller = new EtudiantController($twig);
@@ -309,6 +312,21 @@ switch ($uri) {
         $controller->index();
         break;
 
+
+
+
+    case 'cgu':
+        $controller = new CGUController($twig);
+        $controller->cgu();
+        break;
+    case 'politique_confidentialite':
+        $controller = new PolitiqueConfidentialiteController($twig);
+        $controller->politique_confidentialite();
+        break;
+    case 'infos_legales':
+        $controller = new InfosLegalesController($twig);
+        $controller->InfosLegales();
+        break; 
 
     default:
         $controller = new Erreur404Controller($twig);
